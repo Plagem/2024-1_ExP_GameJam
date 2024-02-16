@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class DoorMonsterBase : MonsterBase
 {
     private float hp;
+    public bool isRare;
 
     private DoorData doorData;
 
@@ -15,12 +16,20 @@ public class DoorMonsterBase : MonsterBase
         base.Start();
         int randomDoorNum = Random.Range(1, 13);
         Debug.Log($"{Time.time} {randomDoorNum}번 생성");
+        if(isRare)
+        {
+            randomDoorNum = 12;
+        }
+        else
+        {
+            randomDoorNum  = Random.Range(1, 12);
+        }
+        Debug.Log($"{randomDoorNum}번 생성");
         doorData = GameManager.Instance.FloorManager.AllDoorDataList[randomDoorNum];
 
         hp = doorData.hp / 2;
         this.gameObject.name = doorData.name;
         objectIndex = doorData.index;
-        bool isRare = doorData.isRare;
 
         Sprite doorSprite = Resources.Load<Sprite>($"image/Entity/{objectIndex}");
         if(doorSprite == null )
