@@ -24,7 +24,7 @@ public class DoorUI : BaseUI
 
     public void OnUse()
     {
-        GameManager.Instance.IngameUIManager.inventory.UseItmeRight(idx);
+        GameManager.Instance.IngameUIManager.inventory.UseItemRight(idx);
         Destroy(this);
     }
     

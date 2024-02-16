@@ -128,9 +128,10 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void UseItmeRight(int slot) => UsingItem(slot, gates[2]);
+    public void UseItemRight(int slot) => UsingItem(slot, gates[2]);
     public void UsingItem(int itemSlot, BaseGate gate)
     {
+        Debug.Log($"{itemSlot} used");
         DoorItem item = Items[itemSlot];
         if (item.DoorData == None)
             return;
