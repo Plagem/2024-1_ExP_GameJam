@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public abstract class MonsterBase : MonoBehaviour
 {
+    protected Sprite idleSprite;
+    protected Sprite attackedSprite;
+
     [SerializeField]
     protected Slider slider;
     [SerializeField]
