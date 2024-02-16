@@ -17,6 +17,8 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
 
     public UiHoverListener UiHoverListener;
     public bool isGameClickDisabled = false;
+
+    public GameObject RareImage;
     
     public void Start()
     {
@@ -30,8 +32,31 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
 
     public void ShowGameOver()
     {
-        //if(inventory.)
-        GameObject gameover = Instantiate(GameoverPrefab,_canvas.transform);
+        DoorItem item = inventory.GetRare();
+        /// 게임오버다 임마
+        if(item==null)
+        {
+            isGameClickDisabled = true;
+            GameObject gameover = Instantiate(GameoverPrefab,_canvas.transform);
+            return;
+        }
+        // 이걸 살아?
+
+        var obj = Instantiate(RareImage,_canvas.transform);
+        obj.transform.position = item.transform.position;
         isGameClickDisabled = true;
+        var rare = obj.GetComponent<RareItem>();
+        rare.item = item;
+        rare.inventory = inventory;
+        GameManager.Instance.FloorManager.ClearEntity();
+        
+        // GameObject gameover = Instantiate(GameoverPrefab,_canvas.transform);
+       
+    }
+
+    public void ShowGameOverF()
+    {
+        isGameClickDisabled = true;
+        GameObject gameover = Instantiate(GameoverPrefab,_canvas.transform);
     }
 }

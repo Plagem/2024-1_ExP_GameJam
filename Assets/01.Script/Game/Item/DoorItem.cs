@@ -45,7 +45,7 @@ public class DoorItem : MonoBehaviour
         gate.openSprite = open;
         gate.closeSprite = close;
         gate.GetComponent<SpriteRenderer>().sprite = close;
-        Debug.Log(close.name);
 
+        
     }
 }
