@@ -13,6 +13,11 @@ public class MainMenuButton : MonoBehaviour
         GameManager gm = GameManager.Instance;
     }
 
+    public void Start()
+    {
+        SoundManager.Instance.Play("bgm_1_mastered",SoundManager.SoundType.BGM);
+    }
+
     public void GameStart()
     {
         SoundManager.Instance.Play("1. touch");
