@@ -14,7 +14,7 @@ public class DoorMonsterBase : MonsterBase
     {
         base.Start();
         int randomDoorNum = Random.Range(1, 13);
-        Debug.Log($"{randomDoorNum}번 생성");
+        Debug.Log($"{Time.time} {randomDoorNum}번 생성");
         doorData = GameManager.Instance.FloorManager.AllDoorDataList[randomDoorNum];
 
         hp = doorData.hp / 2;
@@ -35,7 +35,7 @@ public class DoorMonsterBase : MonsterBase
 
     protected override void MonsterGetDamage()
     {
-        hp += damage;
+        hp += damage*100;
         if(hp >= goalHp) 
         {
             Debug.Log("몬스터 캐치 성공!");

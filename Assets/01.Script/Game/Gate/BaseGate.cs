@@ -10,8 +10,10 @@ public class BaseGate : MonoBehaviour
     public GameManager gm;
     public FloorManager fm;
     public GateEvent GateEvent;
-    public Sprite CloseSprite;
-    public Sprite OpenSprite;
+    [HideInInspector] public Sprite closeSprite;
+    [HideInInspector] public Sprite openSprite;
+    [FormerlySerializedAs("CloseSprite")] public Sprite DefaultCloseSprite;
+    [FormerlySerializedAs("OpenSprite")] public Sprite DefaultOpenSprite;
     public PolygonCollider2D Collider;
     [SerializeField] private Material focusMaterial;
     
@@ -56,19 +58,25 @@ public class BaseGate : MonoBehaviour
         gm = GameManager.Instance;
         FocusObject = transform.GetChild(0).gameObject;
         sr = GetComponent<SpriteRenderer>();
-        sr.sprite = CloseSprite;
+        sr.sprite = DefaultCloseSprite;
         Collider = GetComponent<PolygonCollider2D>();
     }
 
 
 
+    /// <summary>
+    /// 문 상태 초기화
+    /// </summary>
     public void init()
     {
         state = GateState.Close;
         Collider.enabled = true;
         sr.enabled = true;
         sr.color = Color.white;
-        sr.sprite = CloseSprite;
+        DefaultCloseSprite = closeSprite;
+        DefaultOpenSprite = openSprite;
+        
+        sr.sprite = DefaultCloseSprite;
     }
 
 
@@ -82,7 +90,7 @@ public class BaseGate : MonoBehaviour
 
         Collider.enabled = false;
         State = GateState.Opening;
-        sr.sprite = OpenSprite;
+        sr.sprite = DefaultOpenSprite;
         GateEvent.OnOpen.Invoke(this);
         
         StartCoroutine(Utility.WaitExecute(0.4f, () =>
