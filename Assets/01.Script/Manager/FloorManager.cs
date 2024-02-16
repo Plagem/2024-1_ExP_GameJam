@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using _01.Script;
 using _01.Script.Game.Gate.Event;
 using UnityEngine;
@@ -30,6 +31,11 @@ public class FloorManager : MonoBehaviour
             }
         }
     }
+    
+    // 귀찮으니까 일단 이렇게
+    public bool IsGateClickable => Gates.All((g) =>
+        g.State == BaseGate.GateState.Close || g.State == BaseGate.GateState.Focus);
+    
     [Header("EmptyGateEvent, MonsterGateEvent, DoorGateEvent, FailGateEvent")]
     public List<int> Probabliteis;
     public List<BaseGate> Gates;
@@ -51,9 +57,12 @@ public class FloorManager : MonoBehaviour
     public void GoFloor(int floor, bool noFade = false)
     {
         CurrentFloor = floor;
-        initializeFloor();
+        InitializeFloor();
     }
 
+    /// <summary>
+    /// 해당 층이 클리어 될 시 호출되는 함수
+    /// </summary>
     public void FloorCleared()
     {
         GameManager.Instance.IngameUIManager.isGameClickDisabled = true;
@@ -70,14 +79,17 @@ public class FloorManager : MonoBehaviour
         }));
     }
 
-    public void initializeFloor()
+    /// <summary>
+    /// 새로운 층에서 문 초기화
+    /// </summary>
+    public void InitializeFloor()
     {
         for (int i = 0; i < 3; i++)
         {
             int eventIdx = Utility.WeightedRandom(Probabliteis.ToArray());
             Gates[i].init();
             Gates[i].GateEvent = GateEvents.GateEventList[eventIdx];
-            Debug.Log($"init {i} gate : {GateEvents.GateEventList[eventIdx].name}");
+            Debug.Log($"[{currentFloor}F] init {i} gate : {GateEvents.GateEventList[eventIdx].name}");
         }
     }
 

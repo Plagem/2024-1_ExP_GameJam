@@ -12,13 +12,14 @@ public class BaseGate : MonoBehaviour
     public GateEvent GateEvent;
     public Sprite CloseSprite;
     public Sprite OpenSprite;
-    
+    public PolygonCollider2D Collider;
+    [SerializeField] private Material focusMaterial;
     
     SpriteRenderer sr;
 
     public enum GateState
     {
-        Close, Focus, Open, Clear
+        Close, Focus, Opening, Opened, Clear
     }
     
     // TODO : 상태 관리 바꿀수있으면 바꾸기
@@ -30,17 +31,17 @@ public class BaseGate : MonoBehaviour
         set
         {
             state = value;
-            switch (value)
-            {
-                case GateState.Close:
-                    break;
-                case GateState.Focus:
-                    break;
-                case GateState.Open:
-                    break;
-                case GateState.Clear:
-                    break;
-            }
+            // switch (value) 함수에서 관리함.
+            // {
+            //     case GateState.Close:
+            //         break;
+            //     case GateState.Focus:
+            //         break;
+            //     case GateState.Open:
+            //         break;
+            //     case GateState.Clear:
+            //         break;
+            // }
 
             FocusObject.SetActive(value == GateState.Focus);
         }
@@ -56,6 +57,7 @@ public class BaseGate : MonoBehaviour
         FocusObject = transform.GetChild(0).gameObject;
         sr = GetComponent<SpriteRenderer>();
         sr.sprite = CloseSprite;
+        Collider = GetComponent<PolygonCollider2D>();
     }
 
     // Update is called once per frame
@@ -66,8 +68,9 @@ public class BaseGate : MonoBehaviour
 
     public void init()
     {
-        
-        
+
+        Collider.enabled = true;
+        sr.enabled = true;
         sr.color = Color.white;
         sr.sprite = CloseSprite;
     }
@@ -81,16 +84,24 @@ public class BaseGate : MonoBehaviour
             return;
         }
 
+        Collider.enabled = false;
+        State = GateState.Opening;
         sr.sprite = OpenSprite;
-        State = GateState.Open;
         GateEvent.OnOpen.Invoke(this);
+        
+        StartCoroutine(Utility.WaitExecute(0.4f, () =>
+        {
+            sr.enabled = false;
+            State = GateState.Opened;
+        }));
+
+        
     }
 
     public void Clear()
     {
         Debug.Log("Clear");
         State = GateState.Clear;
-        sr.color = Color.yellow;
         fm.FloorCleared();
     }
 
@@ -99,7 +110,8 @@ public class BaseGate : MonoBehaviour
         UIManager iuiM = gm.IngameUIManager;
         if (iuiM.UiHoverListener.isUIOverride)
             return;
-        if (iuiM.isGameClickDisabled)
+        fm = GameManager.Instance.FloorManager;
+        if (iuiM.isGameClickDisabled || !fm.IsGateClickable)
             return;
         
         Debug.Log($"Clicked {name} s: {state}");
@@ -107,13 +119,13 @@ public class BaseGate : MonoBehaviour
         switch (State)
         {
             case GateState.Close:
-                fm = GameManager.Instance.FloorManager;
                 fm.Focus(this);
                 break;
             case GateState.Focus:
                 OnOpen();
                 break;
-            case GateState.Open:
+            case GateState.Opening:
+            case GateState.Opened:
                 break;
             case GateState.Clear:
                 // fm.GoNextFloor(); 자동으로 넘어감
