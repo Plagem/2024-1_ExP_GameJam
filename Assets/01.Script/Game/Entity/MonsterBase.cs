@@ -9,6 +9,8 @@ public abstract class MonsterBase : MonoBehaviour
 {
     [SerializeField]
     protected Slider slider;
+    [SerializeField]
+    protected GameObject warningTab;
 
     protected float damage = 1f;
     protected float goalHp;
@@ -20,6 +22,7 @@ public abstract class MonsterBase : MonoBehaviour
     protected virtual void Start()
     {
         slider = GameManager.Instance.IngameUIManager.monsterSlider;
+        warningTab = GameManager.Instance.IngameUIManager.warningTab;
     }
 
     protected virtual void Update()
