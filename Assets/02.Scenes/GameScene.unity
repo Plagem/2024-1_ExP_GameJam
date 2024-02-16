@@ -760,6 +760,7 @@ GameObject:
   m_Component:
   - component: {fileID: 370575631}
   - component: {fileID: 370575632}
+  - component: {fileID: 370575633}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -813,6 +814,21 @@ MonoBehaviour:
   - {fileID: 1122367891}
   ItemPrefab: {fileID: 7620284225793321896, guid: 1ff8eb3c4ed79944eb03c1f7da3a0adc, type: 3}
   None: {fileID: 11400000, guid: 075026603c3959c41941ca73a7a849a1, type: 2}
+  drag: {fileID: 370575633}
+--- !u!114 &370575633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370575630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e85db2c7a6ef4d90b226712420f802b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDragging: 0
+  deltaY: 0
 --- !u!1 &373691416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1419,10 +1435,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2136659174}
     m_Modifications:
-    - target: {fileID: 684784531949527843, guid: 1ff8eb3c4ed79944eb03c1f7da3a0adc, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3100861328311812678, guid: 1ff8eb3c4ed79944eb03c1f7da3a0adc, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

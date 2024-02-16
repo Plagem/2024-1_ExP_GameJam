@@ -18,11 +18,17 @@ public class DoorItem : MonoBehaviour
         this.DoorData = doorData;
         successWeight = doorData.ability == 1 ? 100 : 0;
         doorSprite = Resources.LoadAll<Sprite>("image/Doors/testsheet")[0];
-        if (doorData.name == "None")
+        
+        if (doorData.Doorname == "None")
             GetComponent<Image>().color = Color.clear;
         else
             GetComponent<Image>().color = Color.white;
-        }
+    }
+
+    public void StartMove()
+    {
+        
+    }
     
     public void Use(BaseGate gate)
     {

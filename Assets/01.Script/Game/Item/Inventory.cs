@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,13 @@ public class Inventory : MonoBehaviour
 
     [SerializeField]
     private GameObject[] ItemSlot;
-    private DoorItem[] CharacterItems;
+    private DoorItem[] Items;
     
     [FormerlySerializedAs("ItemPrefAb")] [FormerlySerializedAs("ItemPrefeb")] [SerializeField]
     private GameObject ItemPrefab;
 
-    public DoorData None; 
+    public DoorData None;
+    [SerializeField] private Drag drag;
     
 
     private int idx = 0;
@@ -43,6 +45,17 @@ public class Inventory : MonoBehaviour
        
     }
 
+    private void Update()
+    {
+        if (drag.isDragging)
+        {
+            foreach (var item in Items)
+            {
+                item.transform.Translate(0, drag.deltaY, 0, Space.World);
+            }
+        }
+    }
+
     /// <summary>
     /// 게임 시작, 게임 오버, 게임 재시작 시 인벤토리를 초기화한다
     /// </summary>
@@ -51,8 +64,8 @@ public class Inventory : MonoBehaviour
         Debug.Log("Init Inventory");
         maxItemCount = 5;
         itemCount = 0;
-        CharacterItems = ItemSlot.Select((obj) => obj.transform.GetChild(0).GetComponent<DoorItem>()).ToArray();
-        foreach (var item in CharacterItems)
+        Items = ItemSlot.Select((obj) => obj.transform.GetChild(0).GetComponent<DoorItem>()).ToArray();
+        foreach (var item in Items)
         {
             item.init(None);
         }
@@ -71,9 +84,9 @@ public class Inventory : MonoBehaviour
         {
             for(int i = 0; i < maxItemCount; i++)
             {
-                if (CharacterItems[i].DoorData == None)
+                if (Items[i].DoorData == None)
                 {
-                    CharacterItems[i].init(item);
+                    Items[i].init(item);
                     itemCount++;
                     break;
                 }
@@ -109,7 +122,7 @@ public class Inventory : MonoBehaviour
 
     public void UsingItem(int itemSlot)
     {
-        CharacterItems[itemSlot] = null;
+        Items[itemSlot] = null;
         itemCount--;
         DrawInventory();
     }

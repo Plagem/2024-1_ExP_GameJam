@@ -60,11 +60,7 @@ public class BaseGate : MonoBehaviour
         Collider = GetComponent<PolygonCollider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 
     public void init()
     {
