@@ -77,7 +77,10 @@ public class BaseGate : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (gm.IngameUIManager.isGameClickDisabled)
+        UIManager iuiM = gm.IngameUIManager;
+        if (iuiM.UiHoverListener.isUIOverride)
+            return;
+        if (iuiM.isGameClickDisabled)
             return;
         
         Debug.Log($"Clicked {name} c: {isCleared} f:{isFocused}");

@@ -2,16 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
-public enum Item
-{
-    Item1,
-    Item2,
-    Item3,
-    Item4,
-    Item5,
-    None
-}
+using UnityEngine.Serialization;
 
 public class Inventory : MonoBehaviour
 {
@@ -20,39 +11,70 @@ public class Inventory : MonoBehaviour
 
     [SerializeField]
     private GameObject[] ItemSlot;
-
-    [SerializeField]
-    private GameObject[] ItemPrefebs;
+    private DoorItem[] CharacterItems;
     
-    public Item[] CharacterItems;
+    [FormerlySerializedAs("ItemPrefAb")] [FormerlySerializedAs("ItemPrefeb")] [SerializeField]
+    private GameObject ItemPrefab;
+
+    public List<DoorData> AllDoorDataList;
+    public DoorData None => AllDoorDataList[0];
+    
+
+    private int idx = 0;
+
+    public int Index
+    {
+        get => idx;
+        set
+        {
+            // 11 ì´ìƒì€ í•¸ë“¤ë§ ëª»í•¨
+            if (idx >= maxItemCount)
+                idx = value - maxItemCount;
+            else if (idx < 0)
+                idx = value + maxItemCount - 1;
+            else
+                idx = value;
+        }
+    }
 
 
     private void Start()
     {
         InitInventory();
+       
     }
 
-    // °ÔÀÓ ½ÃÀÛ, °ÔÀÓ ¿À¹ö, °ÔÀÓ Àç½ÃÀÛ ½Ã ÀÎº¥Åä¸®¸¦ ÃÊ±âÈ­ÇÑ´Ù
+    /// <summary>
+    /// ê²Œì„ ì‹œì‘, ê²Œì„ ì˜¤ë²„, ê²Œì„ ì¬ì‹œì‘ ì‹œ ì¸ë²¤í† ë¦¬ë¥¼ ì´ˆê¸°í™”í•œë‹¤
+    /// </summary>
     public void InitInventory()
     {
         Debug.Log("Init Inventory");
         maxItemCount = 5;
         itemCount = 0;
-        CharacterItems = Enumerable.Repeat(Item.None, maxItemCount).ToArray();
+        CharacterItems = ItemSlot.Select((obj) => obj.transform.GetChild(0).GetComponent<DoorItem>()).ToArray();
+        foreach (var item in CharacterItems)
+        {
+            item.init(None);
+        }
+        // CharacterItems = Enumerable.Repeat<>(null, maxItemCount).ToArray();
     }
 
-    // ¾ÆÀÌÅÛÀ» ¾ò´Â´Ù
-    private void GetItem(Item item)
+    /// <summary>
+    /// ì•„ì´í…œì„ ì¸ë²¤í† ë¦¬ì— ì¶”ê°€í•œë‹¤.
+    /// </summary>
+    /// <param name="item"></param>
+    private void AddItem(DoorData item)
     {
-        Debug.Log("Get Item");
+        Debug.Log("Add Item");
         Debug.Log(itemCount);
         if(itemCount < maxItemCount)
         {
             for(int i = 0; i < maxItemCount; i++)
             {
-                if (CharacterItems[i] == Item.None)
+                if (CharacterItems[i].DoorData == None)
                 {
-                    CharacterItems[i] = item;
+                    CharacterItems[i].init(item);
                     itemCount++;
                     break;
                 }
@@ -60,45 +82,45 @@ public class Inventory : MonoBehaviour
 
             DrawInventory();
         }
-        // ÀÎº¥Åä¸®°¡ ²Ë Ã¡À» °æ¿ì
+        // ì¸ë²¤í† ë¦¬ê°€ ê½‰ ì°¼ì„ ê²½ìš°
         else
         {
-            Debug.Log("Full Inventory - Can't Get Item");
+            Debug.Log("Full Inventory - Can't Add Item");
             return;
         }
     }
 
     private void DrawInventory()
     {
-        // ¾ÆÀÌÅÛ Ä­ ¼ö¸¸Å­ For Loop
+        // ì•„ì´í…œ ì¹¸ ìˆ˜ë§Œí¼ For Loop
         for(int i = 0; i < maxItemCount;i++)
         {
-            // ÇöÀç ¾ÆÀÌÅÛ ÀÌ¹ÌÁö »èÁ¦
-            for(int j = 0; j < ItemSlot[i].transform.childCount; j++)
-            {
-                Destroy(ItemSlot[i].transform.GetChild(0).gameObject);
-            }
-            // »õ·Î¿î ¾ÆÀÌÅÛ ÀÌ¹ÌÁö »ğÀÔ
-            int nowItemNum = (int)CharacterItems[i];
-            GameObject nowDrawingItem = Instantiate(ItemPrefebs[nowItemNum]);
-            nowDrawingItem.transform.SetParent(ItemSlot[i].transform);
-            nowDrawingItem.transform.localPosition = Vector3.zero;
+            // // í˜„ì¬ ì•„ì´í…œ ì´ë¯¸ì§€ ì‚­ì œ
+            // for(int j = 0; j < ItemSlot[i].transform.childCount; j++)
+            // {
+            //     Destroy(ItemSlot[i].transform.GetChild(0).gameObject);
+            // }
+            // ìƒˆë¡œìš´ ì•„ì´í…œ ì´ë¯¸ì§€ ì‚½ì…
+            // int nowItemNum = (int)CharacterItems[i];
+            // GameObject nowDrawingItem = Instantiate(ItemPrefebs[nowItemNum]);
+            // nowDrawingItem.transform.SetParent(ItemSlot[i].transform);
+            // nowDrawingItem.transform.localPosition = Vector3.zero;
         }
     }
 
     public void UsingItem(int itemSlot)
     {
-        CharacterItems[itemSlot] = Item.None;
+        CharacterItems[itemSlot] = null;
         itemCount--;
         DrawInventory();
     }
 
 
-    public void GetItemTest()
+    public void AddItemTest()
     {
-        GetItem(0);
+        AddItem(AllDoorDataList[1]);
     }
-
+    
     public void UsingItemTest()
     {
         UsingItem(2);

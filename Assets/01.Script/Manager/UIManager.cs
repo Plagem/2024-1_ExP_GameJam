@@ -13,11 +13,12 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
     [SerializeField] private Canvas _canvas;
     [SerializeField] private GameObject GameoverPrefab;
 
+    public UiHoverListener UiHoverListener;
     public bool isGameClickDisabled = false;
     
     public void Start()
     {
-        
+        UiHoverListener = _canvas.GetComponent<UiHoverListener>();
     }
 
     public void OnFloorChanged(int floor)
@@ -28,6 +29,6 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
     public void ShowGameOver()
     {
         GameObject gameover = Instantiate(GameoverPrefab,_canvas.transform);
-        
+        isGameClickDisabled = true;
     }
 }
