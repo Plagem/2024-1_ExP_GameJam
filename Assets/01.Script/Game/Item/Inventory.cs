@@ -137,6 +137,10 @@ public class Inventory : MonoBehaviour
             return;
         if (item.DoorData.isRare)
             return; // 레어는 아래에서
+        if (!GameManager.Instance.FloorManager.IsGateClickable)
+        {
+            return;
+        }
         item.Use(gate);
         item.init(None);
         itemCount--;
