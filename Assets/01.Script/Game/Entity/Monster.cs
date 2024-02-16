@@ -40,7 +40,7 @@ public class Monster : MonsterBase
             Debug.Log("몬스터 사살 성공!");
             Destroy(this.gameObject);
             slider.gameObject.SetActive(false);
-            // 아이템 획득 함수 구현하기
+            GameManager.Instance.FloorManager.FloorCleared();
         }
     }
 
