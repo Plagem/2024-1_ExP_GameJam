@@ -57,11 +57,16 @@ public class FloorManager : MonoBehaviour
     public void FloorCleared()
     {
         GameManager.Instance.IngameUIManager.isGameClickDisabled = true;
+        FadeImg.gameObject.SetActive(true);
         StartCoroutine(FadeRoutine(0, 1, 0.7f, () =>
         {
             GoNextFloor();
-            StartCoroutine(FadeRoutine(1, 0, 0.7f,()=>
-                GameManager.Instance.IngameUIManager.isGameClickDisabled = false));
+            StartCoroutine(FadeRoutine(1, 0, 0.7f,
+                () =>
+                {
+                    GameManager.Instance.IngameUIManager.isGameClickDisabled = false;
+                    FadeImg.gameObject.SetActive(false);
+                }));
         }));
     }
 
