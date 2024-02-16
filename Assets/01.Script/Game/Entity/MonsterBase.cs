@@ -27,6 +27,7 @@ public abstract class MonsterBase : MonoBehaviour
         slider = GameManager.Instance.IngameUIManager.monsterSlider;
         warningTab = GameManager.Instance.IngameUIManager.warningTab;
         monster = gameObject;
+        SoundManager.Instance.PlayTick();
     }
 
     protected virtual void Update()

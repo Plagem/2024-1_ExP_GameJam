@@ -45,6 +45,7 @@ public class Monster : MonsterBase
             Destroy(this.gameObject);
             GameManager.Instance.IngameUIManager.ShowGameOver();
             SoundManager.Instance.Play("13. monster_battle_bomb");
+            
         }
 
     }
@@ -75,6 +76,7 @@ public class Monster : MonsterBase
             slider.gameObject.SetActive(false);
             GameManager.Instance.FloorManager.FloorCleared();
             SoundManager.Instance.Play("14. monster_battle_success");
+            SoundManager.Instance.StopTick();
         }
         else
         {

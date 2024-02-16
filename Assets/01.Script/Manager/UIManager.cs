@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
 
     public void ShowGameOver()
     {
-        DoorItem item = inventory.GetRare();
+        DoorItem item = inventory.GetRare();SoundManager.Instance.StopTick();
         /// 게임오버다 임마
         if(item==null)
         {

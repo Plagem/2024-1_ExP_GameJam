@@ -87,6 +87,7 @@ public class DoorMonsterBase : MonsterBase
             slider.gameObject.SetActive(false);
             GameManager.Instance.FloorManager.FloorCleared();
             inventory.AddItem(doorData);
+            SoundManager.Instance.StopTick();
         }
 
         else

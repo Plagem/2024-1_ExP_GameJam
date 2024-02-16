@@ -75,11 +75,34 @@ public class SoundManager
                 bgmGroup = mixer.FindMatchingGroups("BGM")[0];
                 effectGroup = mixer.FindMatchingGroups("Effect")[0];
 
+                _tickingSource = effect_go.AddComponent<AudioSource>();
+
+                _tickingSource.loop = true;
                 _bgmSource.loop = true; // bgm 재생기는 무한 반복 재생
             }
         }
-
+        /// <summary>
+        /// 띡똑
+        /// </summary>
+        private AudioSource _tickingSource;
+        
         private GameObject effect_go;
+
+        public void PlayTick()
+        {
+            AudioClip clip = GetOrAddAudioClip("7. tick_tock");
+            AudioSource audioSource = _tickingSource;
+            audioSource.pitch = 1.0f;
+            audioSource.volume = 1.0f;
+            audioSource.outputAudioMixerGroup = effectGroup;
+            audioSource.clip = clip;
+            audioSource.Play(); 
+        }
+
+        public void StopTick
+        (){
+            _tickingSource.Stop();
+        }
 
         public void Play(string path, SoundType type = SoundType.Effect, float pitch = 1.0f, float volume = 1.0f)
         {
