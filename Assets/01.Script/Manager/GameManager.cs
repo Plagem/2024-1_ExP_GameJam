@@ -9,8 +9,7 @@ public class GameManager : MonoBehaviour
     public const string NAME = "@Game";
     private static GameManager instance;
 
-    private int currentFloor = 0;
-    public int CurrentFloor => currentFloor;
+    public FloorManager FloorManager;
 
     public static GameManager Instance
     {
@@ -32,7 +31,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public GameState gameState = GameState.Main;
+    public GameState gameState = GameState.Start;
 
 
     public void Start()
@@ -40,7 +39,7 @@ public class GameManager : MonoBehaviour
         switch (SceneManager.GetActiveScene().name)
         {
             case "MainScene":
-                gameState = GameState.Main;
+                gameState = GameState.Start;
                 break;
             case "GameScene":
                 gameState = GameState.Game;
@@ -51,32 +50,25 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        GoFloor(0);
+        if (gameState == GameState.Start)
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+
+        FloorManager = GameObject.Find("@FloorManager").GetComponent<FloorManager>();
+        FloorManager.GoFloor(1);
     }
 
-    public void GoFloor(int floor)
-    {
-        currentFloor = floor;
-        initializeFloor();
-    }
-
-
-    public void initializeFloor()
-    {
-        
-    }
-
-    public void GoNextFloor()=>GoFloor(currentFloor+1);
 
     public void Fail()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("StartScene");
     }
 }
 
 
 public enum GameState
 {
-    Main,
+    Start,
     Game
 }

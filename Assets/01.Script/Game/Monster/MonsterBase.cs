@@ -9,12 +9,13 @@ public class MonsterBase : ScriptableObject, IPointerClickHandler
     
     public void OnPointerClick(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        if(--hp <= 0)
+            Success();
     }
 
 
     public virtual void Success()
     {
-        
+        Debug.Log("Monster: success");
     }
 }

@@ -1,17 +1,18 @@
 
 using System;
 
+[Serializable]
 public class GateEvent
 {
-    public static GateEvent EmptyGateEvent = new GateEvent();
-    public static GateEvent MonsterGateEvent = new GateEvent();
-    public static GateEvent DoorGateEvent = new GateEvent();
-    public static GateEvent FailGateEvent = new GateEvent();
+    public Action<BaseGate> OnOpen;
+    public string name;
 
+    public GateEvent(string name)
+    {
+        this.name = name;
+    }
 
-    private Action OnOpen;
-
-    private GateEvent SetOpenEvent(Action action)
+    private GateEvent SetOpenEvent(Action<BaseGate>  action)
     {
         this.OnOpen = action;
         return this;
