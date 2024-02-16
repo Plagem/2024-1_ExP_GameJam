@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
 
     public void OnFloorChanged(int floor)
     {
-        tmpFloor.text = floor + "F";
+        tmpFloor.text = floor + "층";
     }
 
     public void ShowGameOver()
