@@ -15,8 +15,9 @@ public class GameoverPopup : BaseUI
 
     private void OnEnable()
     {
-        floorInfo.text = $"current floor is {GameManager.Instance.FloorManager.CurrentFloor}F";
+        floorInfo.text = $"현재위치 : 지하 {GameManager.Instance.FloorManager.CurrentFloor}층";
     }
+    
 
     public void OnHome()
     {

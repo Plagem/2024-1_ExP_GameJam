@@ -30,6 +30,8 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
         tmpFloor.text = floor + "층";
     }
 
+    public string overMsg = "Error";
+
     public void ShowGameOver()
     {
         DoorItem item = inventory.GetRare();
@@ -38,6 +40,7 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
         {
             isGameClickDisabled = true;
             GameObject gameover = Instantiate(GameoverPrefab,_canvas.transform);
+            gameover.GetComponent<GameoverPopup>().description.text = overMsg;
             SoundManager.Instance.Play("5. game_over");
             return;
         }
