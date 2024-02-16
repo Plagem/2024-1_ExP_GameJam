@@ -812,20 +812,7 @@ MonoBehaviour:
   - {fileID: 1062920167}
   - {fileID: 1122367891}
   ItemPrefab: {fileID: 7620284225793321896, guid: 1ff8eb3c4ed79944eb03c1f7da3a0adc, type: 3}
-  AllDoorDataList:
-  - {fileID: 11400000, guid: 075026603c3959c41941ca73a7a849a1, type: 2}
-  - {fileID: 11400000, guid: 9792e335291891a4fa06d4d5f7311efc, type: 2}
-  - {fileID: 11400000, guid: efe54d877bb82a6489678be2083b1302, type: 2}
-  - {fileID: 11400000, guid: cf238c579692d8d4b9bc8451d61c91d1, type: 2}
-  - {fileID: 11400000, guid: c366290c601f71b4eb925ec0f6564ee0, type: 2}
-  - {fileID: 11400000, guid: 610999b322ae4244593d5652e41c8e21, type: 2}
-  - {fileID: 11400000, guid: 589191dd14d01a342bd4893a3eb24c32, type: 2}
-  - {fileID: 11400000, guid: 013e090b448568a41902b8a2c492d67d, type: 2}
-  - {fileID: 11400000, guid: ca7c8778ae618de4b9dd7e65f2ca64a0, type: 2}
-  - {fileID: 11400000, guid: 8c384257e8ff9ab4eb78c4123c3ac5d5, type: 2}
-  - {fileID: 11400000, guid: a0cf5cdd7abd66b489e696e62106caf5, type: 2}
-  - {fileID: 11400000, guid: 0a8db911a002bbf41a2d7d8ce1bc60d7, type: 2}
-  - {fileID: 11400000, guid: a1b341dba35a90144828e14360d893b5, type: 2}
+  None: {fileID: 11400000, guid: 075026603c3959c41941ca73a7a849a1, type: 2}
 --- !u!1 &373691416
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,6 +954,20 @@ MonoBehaviour:
   BearPrefab: {fileID: 1139751560498612775, guid: 7a39329308b90a84190180eafa502092, type: 3}
   DoorPrefeb: {fileID: 1025282126610185819, guid: 4f0d1237c506f5c47a2a8f9bf8a0b092, type: 3}
   MonsterPrefeb: {fileID: 78871415429580688, guid: e0127db3ce810ac49b4299807e5382cb, type: 3}
+  AllDoorDataList:
+  - {fileID: 11400000, guid: 075026603c3959c41941ca73a7a849a1, type: 2}
+  - {fileID: 11400000, guid: 9792e335291891a4fa06d4d5f7311efc, type: 2}
+  - {fileID: 11400000, guid: efe54d877bb82a6489678be2083b1302, type: 2}
+  - {fileID: 11400000, guid: cf238c579692d8d4b9bc8451d61c91d1, type: 2}
+  - {fileID: 11400000, guid: c366290c601f71b4eb925ec0f6564ee0, type: 2}
+  - {fileID: 11400000, guid: 610999b322ae4244593d5652e41c8e21, type: 2}
+  - {fileID: 11400000, guid: 589191dd14d01a342bd4893a3eb24c32, type: 2}
+  - {fileID: 11400000, guid: 013e090b448568a41902b8a2c492d67d, type: 2}
+  - {fileID: 11400000, guid: ca7c8778ae618de4b9dd7e65f2ca64a0, type: 2}
+  - {fileID: 11400000, guid: 8c384257e8ff9ab4eb78c4123c3ac5d5, type: 2}
+  - {fileID: 11400000, guid: a0cf5cdd7abd66b489e696e62106caf5, type: 2}
+  - {fileID: 11400000, guid: 0a8db911a002bbf41a2d7d8ce1bc60d7, type: 2}
+  - {fileID: 11400000, guid: a1b341dba35a90144828e14360d893b5, type: 2}
   Probabliteis: 0400000014000000140000000600000032000000
   Gates:
   - {fileID: 949638003}

@@ -10,12 +10,9 @@ public abstract class MonsterBase : MonoBehaviour
     [SerializeField]
     protected Slider slider;
 
-    [SerializeField]
-    protected float limitTime = 5f;
-    [SerializeField]
-    protected float hp = 50f;
-
+    protected float damage = 1f;
     protected float goalHp;
+    protected int objectIndex;
 
     float maxDistance = 15f;
     Vector3 mousePosition;

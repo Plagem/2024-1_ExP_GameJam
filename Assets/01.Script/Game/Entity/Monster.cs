@@ -3,9 +3,8 @@ using UnityEngine.UI;
 
 public class Monster : MonsterBase
 {
-    
-    [SerializeField]
-    private float damage = 5f;
+    private float limitTime = 5f;
+    private float hp = 100;
 
     protected override void Start()
     {
@@ -27,7 +26,8 @@ public class Monster : MonsterBase
         limitTime -= Time.deltaTime;
         if (limitTime < 0)
         {
-            Debug.Log("타임 오버!");
+            Debug.Log("타임 오버. 게임 종료");
+            // 게임 종료 함수
             Destroy(this.gameObject);
         }
     }

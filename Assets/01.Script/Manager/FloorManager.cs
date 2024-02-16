@@ -16,7 +16,9 @@ public class FloorManager : MonoBehaviour
     [Header("문 프리펩")] public GameObject DoorPrefeb;
 
     [Header("몬스터 프리펩")] public GameObject MonsterPrefeb;
-    
+
+    public List<DoorData> AllDoorDataList;
+
     private int currentFloor = 0;
 
     public int CurrentFloor

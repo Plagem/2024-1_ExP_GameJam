@@ -16,8 +16,7 @@ public class Inventory : MonoBehaviour
     [FormerlySerializedAs("ItemPrefAb")] [FormerlySerializedAs("ItemPrefeb")] [SerializeField]
     private GameObject ItemPrefab;
 
-    public List<DoorData> AllDoorDataList;
-    public DoorData None => AllDoorDataList[0];
+    public DoorData None; 
     
 
     private int idx = 0;
@@ -118,7 +117,7 @@ public class Inventory : MonoBehaviour
 
     public void AddItemTest()
     {
-        AddItem(AllDoorDataList[1]);
+        AddItem(GameManager.Instance.FloorManager.AllDoorDataList[1]);
     }
     
     public void UsingItemTest()

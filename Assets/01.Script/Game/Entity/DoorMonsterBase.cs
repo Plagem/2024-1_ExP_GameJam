@@ -6,12 +6,22 @@ using UnityEngine.UI;
 
 public class DoorMonsterBase : MonsterBase
 {
-    [SerializeField]
-    private float damage = 5f;
+    private float hp = 50f;
+
+    private DoorData doorData;
 
     protected override void Start()
     {
         base.Start();
+        int randomDoorNum = Random.Range(1, 13);
+        doorData = GameManager.Instance.FloorManager.AllDoorDataList[randomDoorNum];
+
+        hp = doorData.hp;
+        this.gameObject.name = doorData.name;
+        objectIndex = doorData.index;
+        bool isRare = doorData.isRare;
+
+        gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>($"Resources/image/Entity/{objectIndex}");
 
         slider.gameObject.SetActive(true);
         goalHp = 100;
@@ -36,11 +46,11 @@ public class DoorMonsterBase : MonsterBase
         UpdateSlideBar();
 
         hp -= Time.deltaTime*10;
-        limitTime -= Time.deltaTime;
-        if(limitTime < 0)
+        if(hp <= 0 )
         {
-            Debug.Log("타임 오버!");
+            Debug.Log("잡기 실패. 게임 종료");
             Destroy(this.gameObject);
+            // 게임 종료 함수
         }
     }
 
