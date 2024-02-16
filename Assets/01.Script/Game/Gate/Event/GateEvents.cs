@@ -20,6 +20,7 @@ namespace _01.Script.Game.Gate.Event
 
             SetOpenEvent(gate=>
             {
+                Debug.Log("문 생성");
                 GameObject doorObj = GameObject.Instantiate(gate.fm.DoorPrefeb, gate.transform);
             });
         
