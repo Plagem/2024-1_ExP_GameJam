@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 00_None
   m_EditorClassIdentifier: 
   index: 0
-  name: None
+  Doorname: None
   hp: 0
   ability: 0
   isRare: 0

@@ -21,6 +21,7 @@ public class DoorItem : MonoBehaviour
         successWeight = doorData.ability == 1 ? 100 : 0;
         doorSprite = DoorData.EntitySprite;
         
+        Debug.Log(doorData.Doorname);
         if (doorData.Doorname == "None")
             GetComponent<Image>().color = Color.clear;
         else

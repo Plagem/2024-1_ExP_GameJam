@@ -73,8 +73,8 @@ public class BaseGate : MonoBehaviour
         Collider.enabled = true;
         sr.enabled = true;
         sr.color = Color.white;
-        DefaultCloseSprite = closeSprite;
-        DefaultOpenSprite = openSprite;
+        closeSprite=DefaultCloseSprite ;
+        openSprite=DefaultOpenSprite ;
         
         sr.sprite = DefaultCloseSprite;
     }

@@ -47,18 +47,19 @@ public class GameManager : MonoBehaviour
                 break;
             case "GameScene":
                 gameState = GameState.Game;
-                StartGame(); // 테스트용
+                StartCoroutine(StartGame()); // 테스트용
                 break;
         }
         DontDestroyOnLoad(this);
     }
-
-    public void StartGame()
+    
+    public IEnumerator StartGame()
     {
         if (gameState == GameState.Start)
         {
-            SceneManager.LoadScene("GameScene");
+            AsyncOperation asyncLoad =  SceneManager.LoadSceneAsync("GameScene");
             gameState = GameState.Game;
+            yield return new WaitUntil(()=>asyncLoad.isDone);
         }
 
         FloorManager = GameObject.Find("@FloorManager").GetComponent<FloorManager>();
@@ -66,7 +67,6 @@ public class GameManager : MonoBehaviour
         FloorManager.FloorChangeListeners.Add(IngameUIManager);
         FloorManager.GoFloor(1);
     }
-    
 
     public void LoadHome()
     {

@@ -15,11 +15,14 @@ public class MainMenuButton : MonoBehaviour
 
     IEnumerator LoadIngameScene()
     {
-        AsyncOperation asyncLoad =  SceneManager.LoadSceneAsync(IngameSceneName);
-        while(!asyncLoad.isDone)
-        {
-            yield return null;
-        }
+
+        yield return StartCoroutine(GameManager.Instance.StartGame());
+        // while(!asyncLoad.isDone)
+        // {
+        //     yield return null;
+        // }
+        //     yield return null;
+        // }
     }
 
     public void ExitGame()
