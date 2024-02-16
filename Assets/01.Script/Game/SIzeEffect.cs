@@ -17,15 +17,15 @@ public class SIzeEffect : MonoBehaviour
     private void Update()
     {
         translateAbs += Time.deltaTime * translateSpeed;
-        if(translateAbs > 1)
+        if(translateAbs > 0.5f)
         {
             translateSpeed = -1.5f;
         }
-        else if(translateAbs < 0.5f)
+        else if(translateAbs < 0.25f)
         {
             translateSpeed = 1.5f;
         }
         
-        rectTransform.localScale = Vector3.one * (1.5f + translateAbs);
+        rectTransform.localScale = Vector3.one * (0.5f + translateAbs) * 0.75f;
     }
 }
