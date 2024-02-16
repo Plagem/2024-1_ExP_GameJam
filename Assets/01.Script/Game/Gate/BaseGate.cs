@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _01.Script;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 public class BaseGate : MonoBehaviour
 {
+    public GameManager gm;
     public FloorManager fm;
     public GateEvent GateEvent;
     
@@ -23,6 +25,7 @@ public class BaseGate : MonoBehaviour
         get => isFocused;
         set
         {
+            isFocused = value;
             FocusObject.SetActive(value);
         }
     }
@@ -31,9 +34,9 @@ public class BaseGate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gm = GameManager.Instance;
         FocusObject = transform.GetChild(0).gameObject;
         sr = GetComponent<SpriteRenderer>();
-        
     }
 
     // Update is called once per frame
@@ -69,10 +72,14 @@ public class BaseGate : MonoBehaviour
         Debug.Log("Clear");
         isCleared = true;
         sr.color = Color.yellow;
+        fm.FloorCleared();
     }
 
     public void OnMouseDown()
     {
+        if (gm.IngameUIManager.isGameClickDisabled)
+            return;
+        
         Debug.Log($"Clicked {name} c: {isCleared} f:{isFocused}");
         
         if(isCleared)
@@ -85,6 +92,7 @@ public class BaseGate : MonoBehaviour
         {
             fm = GameManager.Instance.FloorManager;
             fm.Focus(this);
+            Debug.Log($"Clicked {name} c: {isCleared} f:{isFocused}");
             return;
         }
         // 초점 O

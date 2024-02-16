@@ -9,7 +9,7 @@ public class MainMenuButton : MonoBehaviour
 
     public void GameStart()
     {
-        // ÀÎ°ÔÀÓ ¾À ÀÌ¸§ : GameScene
+        // ì¸ê²Œì„ ì”¬ ì´ë¦„ : GameScene
         StartCoroutine(LoadIngameScene());
     }
 
