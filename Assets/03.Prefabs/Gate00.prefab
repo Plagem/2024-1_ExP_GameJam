@@ -224,8 +224,9 @@ MonoBehaviour:
     name: 
   CloseSprite: {fileID: 21300000, guid: d78b73717a49974499b4cfcabb8c69e3, type: 3}
   OpenSprite: {fileID: 21300000, guid: 715cd17b04dc82d45a76413ff9ae5655, type: 3}
-  Collider: {fileID: 0}
+  Collider: {fileID: 5698240918349181671}
   focusMaterial: {fileID: 0}
+  FocusObject: {fileID: 1174465087370890143}
 --- !u!95 &7473880590796555111
 Animator:
   serializedVersion: 5
@@ -254,7 +255,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6427212094998457466}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:

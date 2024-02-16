@@ -46,7 +46,7 @@ public class BaseGate : MonoBehaviour
             FocusObject.SetActive(value == GateState.Focus);
         }
     }
-
+    [SerializeField]
     private GameObject FocusObject;
     
     
