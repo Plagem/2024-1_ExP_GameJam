@@ -68,7 +68,7 @@ public class BaseGate : MonoBehaviour
 
     public void init()
     {
-
+        state = GateState.Close;
         Collider.enabled = true;
         sr.enabled = true;
         sr.color = Color.white;
