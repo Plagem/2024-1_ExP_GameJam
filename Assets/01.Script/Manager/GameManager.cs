@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public const string NAME = "@Game";
     private static GameManager instance;
 
+    private int currentFloor = 0;
+    public int CurrentFloor => currentFloor;
+
     public static GameManager Instance
     {
         get
@@ -46,7 +49,29 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    
+    public void StartGame()
+    {
+        GoFloor(0);
+    }
+
+    public void GoFloor(int floor)
+    {
+        currentFloor = floor;
+        initializeFloor();
+    }
+
+
+    public void initializeFloor()
+    {
+        
+    }
+
+    public void GoNextFloor()=>GoFloor(currentFloor+1);
+
+    public void Fail()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
 }
 
 
