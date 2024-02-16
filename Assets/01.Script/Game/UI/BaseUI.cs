@@ -1,7 +1,7 @@
-namespace _01.Script.Game.UI
-{
-    public class BaseUI
+using UnityEngine;
+
+
+    public class BaseUI:MonoBehaviour
     {
         
     }
-}

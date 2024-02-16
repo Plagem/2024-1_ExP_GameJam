@@ -9,6 +9,9 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
     [SerializeField]
     private TextMeshProUGUI tmpFloor;
 
+    [SerializeField] private Canvas _canvas;
+    [SerializeField] private GameObject GameoverPrefab;
+
     public bool isGameClickDisabled = false;
     
     public void Start()
@@ -20,6 +23,10 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
     {
         tmpFloor.text = floor + "F";
     }
-    
-    
+
+    public void ShowGameOver()
+    {
+        GameObject gameover = Instantiate(GameoverPrefab,_canvas.transform);
+        
+    }
 }
