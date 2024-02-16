@@ -10,6 +10,9 @@ public class BaseGate : MonoBehaviour
     public GameManager gm;
     public FloorManager fm;
     public GateEvent GateEvent;
+    public Sprite CloseSprite;
+    public Sprite OpenSprite;
+    
     
     SpriteRenderer sr;
     
@@ -37,6 +40,7 @@ public class BaseGate : MonoBehaviour
         gm = GameManager.Instance;
         FocusObject = transform.GetChild(0).gameObject;
         sr = GetComponent<SpriteRenderer>();
+        sr.sprite = CloseSprite;
     }
 
     // Update is called once per frame
@@ -51,7 +55,7 @@ public class BaseGate : MonoBehaviour
         IsFocused = false;
         
         sr.color = Color.white;
-        
+        sr.sprite = CloseSprite;
     }
 
 
@@ -63,6 +67,7 @@ public class BaseGate : MonoBehaviour
             return;
         }
 
+        sr.sprite = OpenSprite;
         IsFocused = false;
         GateEvent.OnOpen.Invoke(this);
     }

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2489880360448062642}
   - component: {fileID: 4079074986317921155}
   - component: {fileID: 6903779827974850435}
-  - component: {fileID: 1965665459989133210}
   - component: {fileID: 7473880590796555111}
+  - component: {fileID: 5698240918349181671}
   m_Layer: 7
   m_Name: Gate00
   m_TagString: Untagged
@@ -28,9 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6427212094998457466}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6507405054288562603}
@@ -104,8 +104,31 @@ MonoBehaviour:
   fm: {fileID: 0}
   GateEvent:
     name: 
---- !u!61 &1965665459989133210
-BoxCollider2D:
+  CloseSprite: {fileID: 21300000, guid: d78b73717a49974499b4cfcabb8c69e3, type: 3}
+  OpenSprite: {fileID: 21300000, guid: 715cd17b04dc82d45a76413ff9ae5655, type: 3}
+--- !u!95 &7473880590796555111
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6427212094998457466}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!60 &5698240918349181671
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -133,7 +156,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -146,30 +169,48 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!95 &7473880590796555111
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6427212094998457466}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.87, y: 1.4499999}
+      - {x: 1.81, y: 1.68}
+      - {x: 1.76, y: 1.86}
+      - {x: 1.62, y: 2.1399999}
+      - {x: 1.53, y: 2.3}
+      - {x: 1.51, y: 2.33}
+      - {x: 1.29, y: 2.55}
+      - {x: 1.18, y: 2.6499999}
+      - {x: 1.04, y: 2.79}
+      - {x: 0.94, y: 2.84}
+      - {x: 0.83, y: 2.9199998}
+      - {x: 0.68, y: 3}
+      - {x: 0.52, y: 3.07}
+      - {x: 0.47, y: 3.08}
+      - {x: 0.35999998, y: 3.12}
+      - {x: 0.19, y: 3.1499999}
+      - {x: 0.04, y: 3.1599998}
+      - {x: -0.049999997, y: 3.1599998}
+      - {x: -0.099999994, y: 3.1499999}
+      - {x: -0.38, y: 3.1}
+      - {x: -0.56, y: 3.03}
+      - {x: -0.83, y: 2.9299998}
+      - {x: -0.95, y: 2.8899999}
+      - {x: -1.29, y: 2.61}
+      - {x: -1.43, y: 2.48}
+      - {x: -1.55, y: 2.33}
+      - {x: -1.6999999, y: 2.02}
+      - {x: -1.74, y: 1.92}
+      - {x: -1.8, y: 1.7099999}
+      - {x: -1.9, y: 1.3}
+      - {x: -1.9599999, y: 1}
+      - {x: -1.9699999, y: 0.90999997}
+      - {x: -1.9799999, y: 0.76}
+      - {x: -1.99, y: 0.58}
+      - {x: -2, y: 0.42}
+      - {x: -2, y: -3.1999998}
+      - {x: 2, y: -3.1999998}
+      - {x: 2, y: 0.95}
+      - {x: 1.91, y: 1.3}
+  m_UseDelaunayMesh: 0
 --- !u!1 &7567505159107010207
 GameObject:
   m_ObjectHideFlags: 0
