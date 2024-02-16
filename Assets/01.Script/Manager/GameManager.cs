@@ -66,11 +66,16 @@ public class GameManager : MonoBehaviour
         FloorManager.FloorChangeListeners.Add(IngameUIManager);
         FloorManager.GoFloor(1);
     }
+    
 
-
-    public void Fail()
+    public void LoadHome()
     {
         SceneManager.LoadScene("StartScene");
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("GameScene");
     }
 }
 

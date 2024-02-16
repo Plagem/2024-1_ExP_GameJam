@@ -9,7 +9,9 @@ using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
 
 public class FloorManager : MonoBehaviour
-{    
+{
+    [Header("곰 프리펩")] public GameObject BearPrefab;
+    
     private int currentFloor = 0;
 
     public int CurrentFloor

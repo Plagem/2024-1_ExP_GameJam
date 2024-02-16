@@ -12,8 +12,8 @@ TagManager:
   - Water
   - UI
   - BackGround
-  - Ingame
-  - 
+  - Door
+  - Entity
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Door
+    uniqueID: 1167126843
+    locked: 0
+  - name: Entity
+    uniqueID: 4214087671
     locked: 0
