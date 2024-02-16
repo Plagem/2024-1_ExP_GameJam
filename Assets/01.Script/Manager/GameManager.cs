@@ -37,6 +37,10 @@ public class GameManager : MonoBehaviour
 
     public GameState gameState = GameState.Start;
 
+    public void Awake()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
     public void Start()
     {
@@ -55,13 +59,28 @@ public class GameManager : MonoBehaviour
     
     public IEnumerator StartGame()
     {
-        if (gameState == GameState.Start)
+        if (gameState != GameState.Game)
         {
             AsyncOperation asyncLoad =  SceneManager.LoadSceneAsync("GameScene");
             gameState = GameState.Game;
             yield return new WaitUntil(()=>asyncLoad.isDone);
         }
+        else
+        {
+            Restart();
+        }
 
+        yield return null;
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if(scene.name == "GameScene")
+            InitGameScene();
+    }
+
+    public void InitGameScene()
+    {
         FloorManager = GameObject.Find("@FloorManager").GetComponent<FloorManager>();
         IngameUIManager = GameObject.Find("@UIManager").GetComponent<UIManager>();
         FloorManager.FloorChangeListeners.Add(IngameUIManager);

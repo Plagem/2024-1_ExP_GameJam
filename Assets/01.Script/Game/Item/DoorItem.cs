@@ -19,12 +19,15 @@ public class DoorItem : MonoBehaviour
     {
         this.DoorData = doorData;
         successWeight = doorData.ability == 1 ? 100 : 0;
-        doorSprite = DoorData.EntitySprite;
+        
         
         if (doorData.Doorname == "None")
             GetComponent<Image>().color = Color.clear;
         else
+        {
+            GetComponent<Image>().sprite = DoorData.EntitySprite;
             GetComponent<Image>().color = Color.white;
+        }
     }
 
     public void StartMove()
@@ -34,11 +37,15 @@ public class DoorItem : MonoBehaviour
     
     public void Use(BaseGate gate)
     {
+        if (DoorData.index == 0)
+            return;
         gate.GateEvent = GateEvents.EmptyGateEvent;
         Sprite open = DoorData.OpenSprite;
         Sprite close = DoorData.CloseSprite;
         gate.openSprite = open;
         gate.closeSprite = close;
-        gate.init();
+        gate.GetComponent<SpriteRenderer>().sprite = close;
+        Debug.Log(close.name);
+
     }
 }

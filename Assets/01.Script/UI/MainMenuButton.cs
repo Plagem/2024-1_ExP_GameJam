@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,11 @@ public class MainMenuButton : MonoBehaviour
 {
     private string IngameSceneName = "GameScene";
 
+    private void Awake()
+    {
+        GameManager gm = GameManager.Instance;
+    }
+
     public void GameStart()
     {
         // 인게임 씬 이름 : GameScene
@@ -15,14 +21,11 @@ public class MainMenuButton : MonoBehaviour
 
     IEnumerator LoadIngameScene()
     {
-
-        yield return StartCoroutine(GameManager.Instance.StartGame());
-        // while(!asyncLoad.isDone)
-        // {
-        //     yield return null;
-        // }
-        //     yield return null;
-        // }
+        AsyncOperation asyncLoad =  SceneManager.LoadSceneAsync(IngameSceneName);
+        while(!asyncLoad.isDone)
+        {
+            yield return null;
+        }
     }
 
     public void ExitGame()

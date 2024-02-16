@@ -12,8 +12,8 @@ public class BaseGate : MonoBehaviour
     public GateEvent GateEvent;
     [HideInInspector] public Sprite closeSprite;
     [HideInInspector] public Sprite openSprite;
-    [FormerlySerializedAs("CloseSprite")] public Sprite DefaultCloseSprite;
-    [FormerlySerializedAs("OpenSprite")] public Sprite DefaultOpenSprite;
+     public Sprite DefaultCloseSprite;
+     public Sprite DefaultOpenSprite;
     public PolygonCollider2D Collider;
     [SerializeField] private Material focusMaterial;
     
@@ -50,16 +50,19 @@ public class BaseGate : MonoBehaviour
     }
     [SerializeField]
     private GameObject FocusObject;
-    
-    
+
+    private void Awake()
+    {
+        sr = GetComponent<SpriteRenderer>();
+        Collider = GetComponent<PolygonCollider2D>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         gm = GameManager.Instance;
         FocusObject = transform.GetChild(0).gameObject;
-        sr = GetComponent<SpriteRenderer>();
         sr.sprite = DefaultCloseSprite;
-        Collider = GetComponent<PolygonCollider2D>();
     }
 
 
@@ -79,7 +82,6 @@ public class BaseGate : MonoBehaviour
         sr.sprite = DefaultCloseSprite;
     }
 
-
     public void OnOpen()
     {
         if (GateEvent == null)
@@ -90,7 +92,7 @@ public class BaseGate : MonoBehaviour
 
         Collider.enabled = false;
         State = GateState.Opening;
-        sr.sprite = DefaultOpenSprite;
+        sr.sprite = openSprite;
         GateEvent.OnOpen.Invoke(this);
         
         StartCoroutine(Utility.WaitExecute(0.4f, () =>

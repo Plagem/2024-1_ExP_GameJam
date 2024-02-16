@@ -2,8 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
+
 
 public class Inventory : MonoBehaviour
 {
@@ -19,7 +22,9 @@ public class Inventory : MonoBehaviour
 
     public DoorData None;
     [SerializeField] private Drag drag;
-    
+
+
+    [SerializeField] private List<BaseGate> gates;
 
     private int idx = 0;
 
@@ -84,6 +89,7 @@ public class Inventory : MonoBehaviour
         {
             for(int i = 0; i < maxItemCount; i++)
             {
+                Debug.Log(Items[i].DoorData);
                 if (Items[i].DoorData == None)
                 {
                     Items[i].init(item);
@@ -91,8 +97,6 @@ public class Inventory : MonoBehaviour
                     break;
                 }
             }
-
-            DrawInventory();
         }
         // 인벤토리가 꽉 찼을 경우
         else
@@ -120,21 +124,24 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void UsingItem(int itemSlot)
+    public void UsingItem(int itemSlot, BaseGate gate)
     {
-        Items[itemSlot] = null;
+        DoorItem item = Items[itemSlot];
+        if (item.DoorData == None)
+            return;
+        item.Use(gate);
+        item.init(None);
         itemCount--;
-        DrawInventory();
     }
 
 
     public void AddItemTest()
     {
-        AddItem(GameManager.Instance.FloorManager.AllDoorDataList[1]);
+        AddItem(GameManager.Instance.FloorManager.AllDoorDataList[Random.Range(1,11)]);
     }
     
     public void UsingItemTest()
     {
-        UsingItem(2);
+        UsingItem(2,gates[1]);
     }
 }
