@@ -3,12 +3,13 @@ using System;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour, IFloorChangeListener
 {
     [SerializeField]
     private TextMeshProUGUI tmpFloor;
-
+    [SerializeField] public Slider monsterSlider;
     [SerializeField] private Canvas _canvas;
     [SerializeField] private GameObject GameoverPrefab;
 

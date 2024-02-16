@@ -3,24 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro.EditorUtilities;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public abstract class MonsterBase : MonoBehaviour
 {
+    [SerializeField]
+    protected Slider slider;
+
     [SerializeField]
     protected float limitTime = 5f;
     [SerializeField]
     protected float hp = 50f;
 
     protected float goalHp;
-    private bool isValidTarget;
 
     float maxDistance = 15f;
     Vector3 mousePosition;
 
     protected virtual void Start()
     {
-
+        slider = GameManager.Instance.IngameUIManager.monsterSlider;
     }
 
     protected virtual void Update()

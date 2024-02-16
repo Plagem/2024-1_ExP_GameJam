@@ -3,8 +3,7 @@ using UnityEngine.UI;
 
 public class Monster : MonsterBase
 {
-    [SerializeField]
-    Slider slider;
+    
     [SerializeField]
     private float damage = 5f;
 

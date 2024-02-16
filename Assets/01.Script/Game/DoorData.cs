@@ -8,5 +8,6 @@ using UnityEngine;
         public int hp;
         public int ability;
         public bool isRare;
-
+        
+        
     }

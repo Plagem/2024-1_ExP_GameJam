@@ -7,15 +7,11 @@ using UnityEngine.UI;
 public class DoorMonsterBase : MonsterBase
 {
     [SerializeField]
-    Slider slider;
-    [SerializeField]
     private float damage = 5f;
 
     protected override void Start()
     {
         base.Start();
-
-        // 게임 화면에서 게이지 가져오기
 
         slider.gameObject.SetActive(true);
         goalHp = 100;

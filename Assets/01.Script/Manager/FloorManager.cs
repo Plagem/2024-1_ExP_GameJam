@@ -11,6 +11,10 @@ using Image = UnityEngine.UI.Image;
 public class FloorManager : MonoBehaviour
 {
     [Header("곰 프리펩")] public GameObject BearPrefab;
+
+    [Header("문 프리펩")] public GameObject DoorPrefeb;
+
+    [Header("몬스터 프리펩")] public GameObject MonsterPrefeb;
     
     private int currentFloor = 0;
 
