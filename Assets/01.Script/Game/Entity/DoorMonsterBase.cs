@@ -18,22 +18,29 @@ public class DoorMonsterBase : MonsterBase
     protected override void Start()
     {
         base.Start();
+
         inventory = GameManager.Instance.IngameUIManager.inventory;
         if(inventory == null)
         {
             Debug.Log("Inventory null error");
         }
         int randomDoorNum = Random.Range(1, 13);
-        Debug.Log($"{Time.time} {randomDoorNum}번 생성");
-        if(isRare)
+
+        
+
+        if (isRare)
         {
             randomDoorNum = 12;
             gameObject.GetComponent<BoxCollider2D>().size = new Vector2(8, 8);
+            idleSprite = Resources.Load<Sprite>($"image/Entity/12");
+            attackedSprite = Resources.Load<Sprite>($"image/Entity/12_2");
         }
         else
         {
             randomDoorNum  = Random.Range(1, 12);
             gameObject.GetComponent<BoxCollider2D>().size = new Vector2(4, 4);
+            idleSprite = Resources.Load<Sprite>($"image/Entity/{randomDoorNum}");
+            attackedSprite = Resources.Load<Sprite>($"image/Entity/{randomDoorNum}_2");
 
         }
         Debug.Log($"{randomDoorNum}번 생성");
@@ -48,12 +55,19 @@ public class DoorMonsterBase : MonsterBase
         {
             Debug.Log("DoorSprite Null 발생");
         }
-        gameObject.GetComponent<SpriteRenderer>().sprite = doorSprite;
+        gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
 
         slider.gameObject.SetActive(true);
         warningTab.gameObject.SetActive(true);
         warningTab.transform.Find("Warning").GetComponent<Image>().sprite = Resources.Load<Sprite>("image/UIs/ui_catch");
         goalHp = doorData.hp;
+    }
+
+    IEnumerator DoorAttack()
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = attackedSprite;
+        yield return new WaitForSecondsRealtime(.05f);
+        gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
     }
 
     protected override void MonsterGetDamage()
@@ -72,6 +86,8 @@ public class DoorMonsterBase : MonsterBase
             GameManager.Instance.FloorManager.FloorCleared();
             inventory.AddItem(doorData);
         }
+
+        StartCoroutine(DoorAttack());
     }
 
     protected override void Update()
