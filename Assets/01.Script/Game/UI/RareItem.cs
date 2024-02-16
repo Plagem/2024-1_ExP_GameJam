@@ -21,11 +21,7 @@ public class RareItem:MonoBehaviour
         GetComponent<Animator>().SetTrigger("gogogo");
         transform.position = new Vector3(1040, 540, 0);
         yield return new WaitForSeconds(2.0f);
-        if(gameObject)
-        {
-            Destroy(gameObject);
-            GameManager.Instance.IngameUIManager.ShowGameOverF();
-        }
+        Use();
             
     }
 
@@ -40,7 +36,7 @@ public class RareItem:MonoBehaviour
 
     public void OnMouseDown()
     {
-        Use();
+        
     }
 
 
