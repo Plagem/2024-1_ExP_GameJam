@@ -45,6 +45,7 @@ public class DoorItem : MonoBehaviour
         gate.openSprite = open;
         gate.closeSprite = close;
         gate.GetComponent<SpriteRenderer>().sprite = close;
+        gate.State = BaseGate.GateState.Close;
         SoundManager.Instance.Play("15. inven_door_use");
         
     }
