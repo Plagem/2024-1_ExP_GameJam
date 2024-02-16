@@ -79,14 +79,20 @@ public class DoorMonsterBase : MonsterBase
         }
 
         hp += damage;
+        
         if(hp >= goalHp) 
         {
+            SoundManager.Instance.Play("9. door_catch_success");
             Destroy(this.gameObject);
             slider.gameObject.SetActive(false);
             GameManager.Instance.FloorManager.FloorCleared();
             inventory.AddItem(doorData);
         }
 
+        else
+        {
+            SoundManager.Instance.Play("8. door_catch_touch");
+        }
         StartCoroutine(DoorAttack());
     }
 
@@ -101,6 +107,7 @@ public class DoorMonsterBase : MonsterBase
         {
             Destroy(this.gameObject);
             GameManager.Instance.IngameUIManager.ShowGameOver();
+            SoundManager.Instance.Play("10. door_catch_failure");
         }
     }
 

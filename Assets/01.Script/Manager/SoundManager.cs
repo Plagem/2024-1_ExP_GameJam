@@ -204,7 +204,7 @@ public class SoundManager
             if (optVibration)
             {
 #if UNITY_ANDROID
-            Vibration.Vibrate(150);
+            // Vibration.Vibrate(150);
 
 #endif
 #if UNITY_EDITOR
