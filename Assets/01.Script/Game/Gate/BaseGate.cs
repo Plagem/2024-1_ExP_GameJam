@@ -21,7 +21,7 @@ public class BaseGate : MonoBehaviour
 
     public enum GateState
     {
-        Close, Focus, Opening, Opened, Clear
+        Close, Focus, Opening, Opened, Clear, Disabled
     }
     
     // TODO : 상태 관리 바꿀수있으면 바꾸기
@@ -141,8 +141,11 @@ public class BaseGate : MonoBehaviour
         
     }
 
-    public void Summon(MonsterBase monsterBase)
+    public void SetDisable()
     {
-        
+        State = GateState.Disabled;
+        sr.color = Color.gray;
+        sr.sprite = closeSprite;
+        sr.enabled = true;
     }
 }

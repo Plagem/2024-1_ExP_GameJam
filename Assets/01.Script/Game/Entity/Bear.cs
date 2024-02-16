@@ -7,8 +7,11 @@ public class Bear: MonoBehaviour
     [SerializeField]
     private SpriteRenderer sr;
 
+    public static GameObject bear;
+
     public IEnumerator BearRoutine(float time, float sizeMultiplier)
     {
+        bear = gameObject;
         yield return StartCoroutine(EnlargeRoutine(time, sizeMultiplier));
         
         GameManager.Instance.IngameUIManager.ShowGameOver();

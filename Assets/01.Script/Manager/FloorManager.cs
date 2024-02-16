@@ -38,7 +38,7 @@ public class FloorManager : MonoBehaviour
     
     // 귀찮으니까 일단 이렇게
     public bool IsGateClickable => Gates.All((g) =>
-        g.State == BaseGate.GateState.Close || g.State == BaseGate.GateState.Focus);
+        g.State == BaseGate.GateState.Close || g.State == BaseGate.GateState.Focus|| g.State == BaseGate.GateState.Disabled);
     
     [Header("EmptyGateEvent, MonsterGateEvent, DoorGateEvent, FailGateEvent")]
     public List<int> Probabliteis;
@@ -123,5 +123,13 @@ public class FloorManager : MonoBehaviour
         }
 
         gate.State = BaseGate.GateState.Focus;
+    }
+
+    public void ClearEntity()
+    {
+        if(Bear.bear)
+            Destroy(Bear.bear);
+        if(MonsterBase.monster)
+            Destroy(MonsterBase.monster);
     }
 }

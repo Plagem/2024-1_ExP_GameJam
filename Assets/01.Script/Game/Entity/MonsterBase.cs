@@ -19,10 +19,14 @@ public abstract class MonsterBase : MonoBehaviour
     float maxDistance = 15f;
     Vector3 mousePosition;
 
+
+    public static GameObject monster;
+    
     protected virtual void Start()
     {
         slider = GameManager.Instance.IngameUIManager.monsterSlider;
         warningTab = GameManager.Instance.IngameUIManager.warningTab;
+        monster = gameObject;
     }
 
     protected virtual void Update()

@@ -129,15 +129,33 @@ public class Inventory : MonoBehaviour
         DoorItem item = Items[itemSlot];
         if (item.DoorData == None)
             return;
+        if (item.DoorData.isRare)
+            return; // 레어는 아래에서
         item.Use(gate);
         item.init(None);
         itemCount--;
     }
 
+    public DoorItem GetRare()
+    {
+        for (int i = 0; i < maxItemCount; i++)
+        {
+            if (Items[i].DoorData.isRare)
+            {
+                DoorItem item = Items[i];
+                
+                return item;
+            }
+        }
+
+        return null;
+    }
+    
+
 
     public void AddItemTest()
     {
-        AddItem(GameManager.Instance.FloorManager.AllDoorDataList[Random.Range(1,11)]);
+        AddItem(GameManager.Instance.FloorManager.AllDoorDataList[12]);
     }
     
     public void UsingItemTest()
