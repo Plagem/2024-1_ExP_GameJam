@@ -1881,6 +1881,7 @@ MonoBehaviour:
   _canvas: {fileID: 1449659674}
   GameoverPrefab: {fileID: 4842372617209397040, guid: 187463256e7ac4545a5c8df5c9a9a5ba, type: 3}
   warningTab: {fileID: 4813736895886503157}
+  inventory: {fileID: 370575632}
   UiHoverListener: {fileID: 1449659676}
   isGameClickDisabled: 0
 --- !u!4 &1384991806
@@ -3147,7 +3148,7 @@ GameObject:
   - component: {fileID: 6960326961220704303}
   - component: {fileID: 662202271163821408}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: WarningMessage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3320,7 +3321,7 @@ GameObject:
   - component: {fileID: 4954884444398629519}
   - component: {fileID: 7637660037188637281}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Warning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
