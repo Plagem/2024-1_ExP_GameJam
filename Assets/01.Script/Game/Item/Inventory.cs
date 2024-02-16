@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 
@@ -52,13 +53,13 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        if (drag.isDragging)
-        {
-            foreach (var item in Items)
-            {
-                item.transform.Translate(0, drag.deltaY, 0, Space.World);
-            }
-        }
+        // if (drag.isDragging)
+        // {
+        //     foreach (var item in Items)
+        //     {
+        //         item.transform.Translate(0, drag.deltaY, 0, Space.World);
+        //     }
+        // }
     }
 
     /// <summary>
@@ -70,9 +71,11 @@ public class Inventory : MonoBehaviour
         maxItemCount = 5;
         itemCount = 0;
         Items = ItemSlot.Select((obj) => obj.transform.GetChild(0).GetComponent<DoorItem>()).ToArray();
-        foreach (var item in Items)
+        for (int i = 0; i < maxItemCount; i++)
         {
-            item.init(None);
+            Items[i].init(None);
+            Items[i].GetComponent<Button>().onClick.AddListener(() => UsingItem(i,gates[2]));
+            Items[i].GetComponent<Button>().onClick.AddListener(()=>Debug.Log("sadasd"));
         }
         // CharacterItems = Enumerable.Repeat<>(null, maxItemCount).ToArray();
     }
@@ -125,6 +128,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void UseItmeRight(int slot) => UsingItem(slot, gates[2]);
     public void UsingItem(int itemSlot, BaseGate gate)
     {
         DoorItem item = Items[itemSlot];
