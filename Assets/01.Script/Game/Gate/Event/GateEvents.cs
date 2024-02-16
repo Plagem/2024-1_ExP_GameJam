@@ -37,6 +37,6 @@ namespace _01.Script.Game.Gate.Event
                 bear.StartCoroutine(bear.BearRoutine(1,3));
             });
 
-        public static GateEvent[] GateEventList = new[] { EmptyGateEvent, MonsterGateEvent, DoorGateEvent, RareDoorGateEvent, FailGateEvent};
+        public static GateEvent[] GateEventList = new[] {FailGateEvent , MonsterGateEvent, DoorGateEvent, RareDoorGateEvent, EmptyGateEvent};
     }
 }
