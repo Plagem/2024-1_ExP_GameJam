@@ -19,6 +19,8 @@ public class FloorManager : MonoBehaviour
 
     public List<DoorData> AllDoorDataList;
 
+    public List<float> AllMonsterDataList;
+
     private int currentFloor = 0;
 
     public int CurrentFloor

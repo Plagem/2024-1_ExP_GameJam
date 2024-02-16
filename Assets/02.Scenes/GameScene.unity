@@ -968,6 +968,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a0cf5cdd7abd66b489e696e62106caf5, type: 2}
   - {fileID: 11400000, guid: 0a8db911a002bbf41a2d7d8ce1bc60d7, type: 2}
   - {fileID: 11400000, guid: a1b341dba35a90144828e14360d893b5, type: 2}
+  AllMonsterDataList:
+  - 10
+  - 15
+  - 15
+  - 15
+  - 20
   Probabliteis: 0400000014000000140000000600000032000000
   Gates:
   - {fileID: 949638003}
