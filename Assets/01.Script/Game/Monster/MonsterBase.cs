@@ -1,24 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 
-public class MonsterBase : MonoBehaviour
+public abstract class MonsterBase : MonoBehaviour
 {
     [SerializeField]
     protected float limitTime = 5f;
     [SerializeField]
-    protected int hp = 5;
+    protected float hp = 50f;
 
+    protected float goalHp;
     private bool isValidTarget;
 
     float maxDistance = 15f;
     Vector3 mousePosition;
 
+    protected virtual void Start()
+    {
+
+    }
+
     protected virtual void Update()
     {
-        // 터치시에는 달라지게 변경하자
         if (Input.GetMouseButtonDown(0))
         {
             CastRay();
@@ -40,14 +46,7 @@ public class MonsterBase : MonoBehaviour
         }
     }
 
-    private void MonsterGetDamage()
-    {
-        if (--hp <= 0)
-        {
-            Destroy(this.gameObject);
-        }
-        Debug.Log($"Enemy 현재 체력 : {hp}");
-    }
+    protected abstract void MonsterGetDamage();
 
     public virtual void Success()
     {
