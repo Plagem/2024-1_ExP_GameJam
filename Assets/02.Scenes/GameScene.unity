@@ -1888,6 +1888,7 @@ MonoBehaviour:
   inventory: {fileID: 370575632}
   UiHoverListener: {fileID: 1449659676}
   isGameClickDisabled: 0
+  RareImage: {fileID: 715491282238634393, guid: fb6a36a4425983043b3574f02c232114, type: 3}
 --- !u!4 &1384991806
 Transform:
   m_ObjectHideFlags: 0
