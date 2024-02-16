@@ -69,6 +69,7 @@ public class FloorManager : MonoBehaviour
     /// </summary>
     public void FloorCleared()
     {
+        SoundManager.Instance.Play("3. goto_next_floor");
         GameManager.Instance.IngameUIManager.isGameClickDisabled = true;
         FadeImg.gameObject.SetActive(true);
         StartCoroutine(FadeRoutine(0, 1, 0.7f, () =>

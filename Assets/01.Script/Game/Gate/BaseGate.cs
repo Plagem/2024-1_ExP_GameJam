@@ -90,6 +90,8 @@ public class BaseGate : MonoBehaviour
             return;
         }
 
+        SoundManager.Instance.Play("2. open_door");
+
         Collider.enabled = false;
         State = GateState.Opening;
         sr.sprite = openSprite;

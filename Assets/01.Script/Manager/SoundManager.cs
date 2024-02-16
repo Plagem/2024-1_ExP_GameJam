@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager
 {
      public const string NAME = "@Sound";
 
@@ -141,16 +141,17 @@ public class SoundManager : MonoBehaviour
         /// <param name="path">BGM경로</param>
         /// <param name="type">BGM종류, 지정없을시 Effect</param>
         /// <returns>해당 AudioClup (없을시 null)</returns>
-        public AudioClip GetOrAddAudioClip(string path, SoundType type = SoundType.Effect)
+        public AudioClip GetOrAddAudioClip(string patha, SoundType type = SoundType.Effect)
         {
+            string path = patha;
             if (path.Contains("Sound/") == false)
-                path = $"Sound/{path}"; // Sound 폴더 안에 저장될 수 있도록
+                path = $"Sound/{(SoundType.BGM == type ? "bgm" : "Effect")}/{path}"; // Sound 폴더 안에 저장될 수 있도록
 
             AudioClip audioClip;
 
             if (type == SoundType.BGM) // BGM 배경음악 클립 붙이기
             {
-                audioClip = Resources.Load<AudioClip>("bgm/"+path);
+                audioClip = Resources.Load<AudioClip>(path);
             }
             else // Effect 효과음 클립 붙이기
             {

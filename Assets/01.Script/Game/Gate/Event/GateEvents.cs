@@ -22,6 +22,7 @@ namespace _01.Script.Game.Gate.Event
             {
                 Debug.Log("문 생성");
                 GameObject doorObj = GameObject.Instantiate(gate.fm.DoorPrefeb, gate.transform);
+                SoundManager.Instance.Play("6. door_appears");
             });
         
         public static GateEvent RareDoorGateEvent = new GateEvent("RareDoor").
@@ -29,6 +30,7 @@ namespace _01.Script.Game.Gate.Event
             {
                 GameObject rareDoorObj = GameObject.Instantiate(gate.fm.DoorPrefeb, gate.transform);
                 rareDoorObj.GetComponent<DoorMonsterBase>().isRare = true;
+                SoundManager.Instance.Play("6. door_appears");
             });
         
         public static GateEvent FailGateEvent = new GateEvent("Fail").
@@ -36,6 +38,7 @@ namespace _01.Script.Game.Gate.Event
             {
                 GameObject bObj = GameObject.Instantiate(gate.fm.BearPrefab, gate.transform);
                 Bear bear = bObj.GetComponent<Bear>();
+                SoundManager.Instance.Play("4. bear_roar");
                 bear.StartCoroutine(bear.BearRoutine(1,3));
             });
 

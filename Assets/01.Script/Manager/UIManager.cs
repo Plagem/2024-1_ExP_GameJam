@@ -38,6 +38,7 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
         {
             isGameClickDisabled = true;
             GameObject gameover = Instantiate(GameoverPrefab,_canvas.transform);
+            SoundManager.Instance.Play("5. game_over");
             return;
         }
         // 이걸 살아?
@@ -58,5 +59,7 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
     {
         isGameClickDisabled = true;
         GameObject gameover = Instantiate(GameoverPrefab,_canvas.transform);
+        SoundManager.Instance.Play("5. game_over");
+        
     }
 }
