@@ -973,7 +973,7 @@ MonoBehaviour:
   - {fileID: 949638003}
   - {fileID: 1411457663}
   - {fileID: 1893428873}
-  FadeImg: {fileID: 0}
+  FadeImg: {fileID: 583878768}
 --- !u!4 &626876503
 Transform:
   m_ObjectHideFlags: 0
@@ -1293,7 +1293,7 @@ PrefabInstance:
       objectReference: {fileID: 626876502}
     - target: {fileID: 7567505159107010207, guid: 5aa4e6cf38d85bf41a875abc443bd334, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
