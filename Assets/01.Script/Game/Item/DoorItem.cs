@@ -19,7 +19,7 @@ public class DoorItem : MonoBehaviour
     {
         this.DoorData = doorData;
         successWeight = doorData.ability == 1 ? 100 : 0;
-        doorSprite = Resources.LoadAll<Sprite>("image/Doors/testsheet")[0];
+        doorSprite = DoorData.EntitySprite;
         
         if (doorData.Doorname == "None")
             GetComponent<Image>().color = Color.clear;
@@ -35,9 +35,10 @@ public class DoorItem : MonoBehaviour
     public void Use(BaseGate gate)
     {
         gate.GateEvent = GateEvents.EmptyGateEvent;
-        Sprite open = Resources.Load<Sprite>(String.Format("image/Door/door{0:D2}_open.png",DoorData.index));
-        Sprite close = Resources.Load<Sprite>(String.Format("image/Door/door{0:D2}_closed.png",DoorData.index));
-        gate.DefaultOpenSprite = open;
-        gate.DefaultCloseSprite = close;
+        Sprite open = DoorData.OpenSprite;
+        Sprite close = DoorData.CloseSprite;
+        gate.openSprite = open;
+        gate.closeSprite = close;
+        gate.init();
     }
 }
