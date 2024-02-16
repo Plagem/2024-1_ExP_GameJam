@@ -150,7 +150,7 @@ public class SoundManager : MonoBehaviour
 
             if (type == SoundType.BGM) // BGM 배경음악 클립 붙이기
             {
-                audioClip = Resources.Load<AudioClip>(path);
+                audioClip = Resources.Load<AudioClip>("bgm/"+path);
             }
             else // Effect 효과음 클립 붙이기
             {
