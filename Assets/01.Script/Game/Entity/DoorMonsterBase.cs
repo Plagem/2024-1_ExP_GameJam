@@ -59,7 +59,7 @@ public class DoorMonsterBase : MonsterBase
 
         slider.gameObject.SetActive(true);
         warningTab.gameObject.SetActive(true);
-        warningTab.transform.Find("Warning").GetComponent<Image>().sprite = Resources.Load<Sprite>("image/UIs/ui_catch");
+        warningTab.transform.Find("Warning").Find("WarningMessage").GetComponent<TMP_Text>().text = "Door";
         goalHp = doorData.hp;
     }
 

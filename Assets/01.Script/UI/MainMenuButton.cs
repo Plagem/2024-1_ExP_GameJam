@@ -15,6 +15,7 @@ public class MainMenuButton : MonoBehaviour
 
     public void GameStart()
     {
+        SoundManager.Instance.Play("1. touch");
         // 인게임 씬 이름 : GameScene
         StartCoroutine(LoadIngameScene());
     }
@@ -30,6 +31,7 @@ public class MainMenuButton : MonoBehaviour
 
     public void ExitGame()
     {
+        SoundManager.Instance.Play("1. touch");
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -39,6 +41,7 @@ public class MainMenuButton : MonoBehaviour
 
     public void OpenOption()
     {
+        SoundManager.Instance.Play("1. touch");
         return;
     }
 }

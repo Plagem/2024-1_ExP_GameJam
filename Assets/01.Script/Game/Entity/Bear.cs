@@ -13,8 +13,8 @@ public class Bear: MonoBehaviour
     {
         bear = gameObject;
         yield return StartCoroutine(EnlargeRoutine(time, sizeMultiplier));
-        
-        GameManager.Instance.IngameUIManager.ShowGameOver();
+
+        GameManager.Instance.IngameUIManager.ShowGameOver(); //"5. game_over");
     }
     
     public IEnumerator EnlargeRoutine(float time, float sizeMultiplier)
