@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: 01_GlassesDoor
   m_EditorClassIdentifier: 
   index: 1
-  name: "\uC548\uACBD\uBB38"
+  Doorname: 
   hp: 20
   ability: 1
   isRare: 0
+  closeSprite: {fileID: 21300000, guid: 6582e93c98e75544f827b5fdc673b8e3, type: 3}
+  openSprite: {fileID: 21300000, guid: b124d2e9e3c8cb24c9aa08d290ab7e3e, type: 3}

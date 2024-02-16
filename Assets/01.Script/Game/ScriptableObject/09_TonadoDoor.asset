@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: 09_TonadoDoor
   m_EditorClassIdentifier: 
   index: 9
-  name: "\uD68C\uC624\uB9AC\uBB38"
+  Doorname: 
   hp: 30
   ability: 1
   isRare: 0
+  closeSprite: {fileID: 21300000, guid: daab631e647967c4a9063d6e04e737c5, type: 3}
+  openSprite: {fileID: 21300000, guid: f9062d460aa5c344f9c2cd5fcafea039, type: 3}

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: 12_MOON
   m_EditorClassIdentifier: 
   index: 12
-  name: MOON
+  Doorname: 
   hp: 80
   ability: 2
   isRare: 1
+  closeSprite: {fileID: 21300000, guid: 661da7b85b6c03641a098de91eecfdda, type: 3}
+  openSprite: {fileID: 21300000, guid: 948bc4214ba0ddf4e93547d8a1342345, type: 3}

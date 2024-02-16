@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: 06_SunGlassesDoor
   m_EditorClassIdentifier: 
   index: 6
-  name: "\uC120\uAE00\uB77C\uC2A4\uBB38"
+  Doorname: 
   hp: 30
   ability: 1
   isRare: 0
+  closeSprite: {fileID: 21300000, guid: 8ee34d6e5bd563446af95f9dfc537d40, type: 3}
+  openSprite: {fileID: 21300000, guid: 5f75f52ef538eb040a3ccc6539366e21, type: 3}

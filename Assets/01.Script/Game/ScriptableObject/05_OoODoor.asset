@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: 05_OoODoor
   m_EditorClassIdentifier: 
   index: 5
-  name: "OoO\uBB38"
+  Doorname: 
   hp: 20
   ability: 1
   isRare: 0
+  closeSprite: {fileID: 21300000, guid: 9d9992cc1402c2144904dd641c467f5e, type: 3}
+  openSprite: {fileID: 21300000, guid: 4adad6f8d8a3fe446ab9a6c4d6c18f9e, type: 3}

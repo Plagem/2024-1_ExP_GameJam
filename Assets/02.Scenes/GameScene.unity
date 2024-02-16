@@ -815,6 +815,10 @@ MonoBehaviour:
   ItemPrefab: {fileID: 7620284225793321896, guid: 1ff8eb3c4ed79944eb03c1f7da3a0adc, type: 3}
   None: {fileID: 11400000, guid: 075026603c3959c41941ca73a7a849a1, type: 2}
   drag: {fileID: 370575633}
+  gates:
+  - {fileID: 949638003}
+  - {fileID: 1411457663}
+  - {fileID: 1893428873}
 --- !u!114 &370575633
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -61,10 +61,12 @@ using UnityEngine;
         public int ability;
         public bool isRare;
 
-
+    
         private Sprite entitySprite;
         private Sprite entityHurtSprite;
+        [SerializeField]
         private Sprite closeSprite;
+        [SerializeField]
         private Sprite openSprite;
 
         
