@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
     [SerializeField] private Canvas _canvas;
     [SerializeField] private GameObject GameoverPrefab;
     public GameObject warningTab;
+    public Inventory inventory;
 
     public UiHoverListener UiHoverListener;
     public bool isGameClickDisabled = false;

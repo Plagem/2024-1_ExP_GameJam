@@ -81,7 +81,7 @@ public class Inventory : MonoBehaviour
     /// 아이템을 인벤토리에 추가한다.
     /// </summary>
     /// <param name="item"></param>
-    private void AddItem(DoorData item)
+    public void AddItem(DoorData item)
     {
         Debug.Log("Add Item");
         Debug.Log(itemCount);

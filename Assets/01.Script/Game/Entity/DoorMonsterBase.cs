@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,13 +9,20 @@ public class DoorMonsterBase : MonsterBase
 {
     private float hp;
     public bool isRare;
-    public int removeClick = 2;
+    private int removeClick = 2;
 
     private DoorData doorData;
+
+    private Inventory inventory;
 
     protected override void Start()
     {
         base.Start();
+        inventory = GameManager.Instance.IngameUIManager.inventory;
+        if(inventory == null)
+        {
+            Debug.Log("Inventory null error");
+        }
         int randomDoorNum = Random.Range(1, 13);
         Debug.Log($"{Time.time} {randomDoorNum}번 생성");
         if(isRare)
@@ -44,7 +52,7 @@ public class DoorMonsterBase : MonsterBase
 
         slider.gameObject.SetActive(true);
         warningTab.gameObject.SetActive(true);
-        Debug.Log("워닝탭 활성화");
+        warningTab.transform.Find("Warning").Find("WarningMessage").GetComponent<TMP_Text>().text = "Door";
         goalHp = doorData.hp;
     }
 
@@ -59,11 +67,10 @@ public class DoorMonsterBase : MonsterBase
         hp += damage;
         if(hp >= goalHp) 
         {
-            Debug.Log("몬스터 캐치 성공!");
             Destroy(this.gameObject);
             slider.gameObject.SetActive(false);
             GameManager.Instance.FloorManager.FloorCleared();
-            // 아이템 획득 함수 구현하기
+            inventory.AddItem(doorData);
         }
     }
 
@@ -76,7 +83,6 @@ public class DoorMonsterBase : MonsterBase
         hp -= Time.deltaTime;
         if(hp <= 0 )
         {
-            Debug.Log("잡기 실패. 게임 종료");
             Destroy(this.gameObject);
             GameManager.Instance.IngameUIManager.ShowGameOver();
         }
