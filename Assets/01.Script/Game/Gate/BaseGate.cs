@@ -15,23 +15,38 @@ public class BaseGate : MonoBehaviour
     
     
     SpriteRenderer sr;
-    
+
+    public enum GateState
+    {
+        Close, Focus, Open, Clear
+    }
     
     // TODO : 상태 관리 바꿀수있으면 바꾸기
-    private bool isFocused;
-    private bool isCleared;
+    private GateState state = GateState.Close;
 
-    private GameObject FocusObject;
-
-    public bool IsFocused
+    public GateState State
     {
-        get => isFocused;
+        get => state;
         set
         {
-            isFocused = value;
-            FocusObject.SetActive(value);
+            state = value;
+            switch (value)
+            {
+                case GateState.Close:
+                    break;
+                case GateState.Focus:
+                    break;
+                case GateState.Open:
+                    break;
+                case GateState.Clear:
+                    break;
+            }
+
+            FocusObject.SetActive(value == GateState.Focus);
         }
     }
+
+    private GameObject FocusObject;
     
     
     // Start is called before the first frame update
@@ -51,8 +66,7 @@ public class BaseGate : MonoBehaviour
 
     public void init()
     {
-        isCleared = false;
-        IsFocused = false;
+        
         
         sr.color = Color.white;
         sr.sprite = CloseSprite;
@@ -68,14 +82,14 @@ public class BaseGate : MonoBehaviour
         }
 
         sr.sprite = OpenSprite;
-        IsFocused = false;
+        State = GateState.Open;
         GateEvent.OnOpen.Invoke(this);
     }
 
     public void Clear()
     {
         Debug.Log("Clear");
-        isCleared = true;
+        State = GateState.Clear;
         sr.color = Color.yellow;
         fm.FloorCleared();
     }
@@ -88,23 +102,25 @@ public class BaseGate : MonoBehaviour
         if (iuiM.isGameClickDisabled)
             return;
         
-        Debug.Log($"Clicked {name} c: {isCleared} f:{isFocused}");
+        Debug.Log($"Clicked {name} s: {state}");
+
+        switch (State)
+        {
+            case GateState.Close:
+                fm = GameManager.Instance.FloorManager;
+                fm.Focus(this);
+                break;
+            case GateState.Focus:
+                OnOpen();
+                break;
+            case GateState.Open:
+                break;
+            case GateState.Clear:
+                // fm.GoNextFloor(); 자동으로 넘어감
+                break;
+            
+        }
         
-        if(isCleared)
-        {
-            fm.GoNextFloor();
-            return;
-        }
-        // 초점 X
-        if (!IsFocused)
-        {
-            fm = GameManager.Instance.FloorManager;
-            fm.Focus(this);
-            Debug.Log($"Clicked {name} c: {isCleared} f:{isFocused}");
-            return;
-        }
-        // 초점 O
-        OnOpen();
     }
 
     public void Summon(MonsterBase monsterBase)

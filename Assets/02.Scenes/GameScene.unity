@@ -1861,7 +1861,7 @@ MonoBehaviour:
   monsterSlider: {fileID: 321100866}
   _canvas: {fileID: 1449659674}
   GameoverPrefab: {fileID: 4842372617209397040, guid: 187463256e7ac4545a5c8df5c9a9a5ba, type: 3}
-  UiHoverListener: {fileID: 0}
+  UiHoverListener: {fileID: 1449659676}
   isGameClickDisabled: 0
 --- !u!4 &1384991806
 Transform:

@@ -103,9 +103,9 @@ public class FloorManager : MonoBehaviour
     {
         foreach (var _gate in Gates)
         {
-            _gate.IsFocused = false;
+            _gate.State = BaseGate.GateState.Close;
         }
 
-        gate.IsFocused = true;
+        gate.State = BaseGate.GateState.Focus;
     }
 }
