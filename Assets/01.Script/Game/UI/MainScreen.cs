@@ -7,9 +7,20 @@ public class MainScreen : MonoBehaviour
     [SerializeField]
     private GameObject credit;
 
+    [SerializeField]
+    private GameObject inventory;
+
+    private void Start()
+    {
+        inventory.SetActive(false);
+        GameManager.Instance.IngameUIManager.isGameClickDisabled = true;
+    }
+
     public void StartGame()
     {
+        inventory.SetActive(true);
         this.gameObject.SetActive(false);
+        GameManager.Instance.IngameUIManager.isGameClickDisabled = false;
     }
 
     public void Exitgame()
