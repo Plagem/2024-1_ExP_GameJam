@@ -1,4 +1,7 @@
+using System;
+using System.Collections;
 using Unity.Mathematics;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace _01.Script
@@ -26,6 +29,11 @@ namespace _01.Script
 
             return - 1;
         }
-        
+
+        public static IEnumerator WaitExecute(float time, Action action)
+        {
+            yield return new WaitForSeconds(time);
+            action.Invoke();
+        }
     }
 }

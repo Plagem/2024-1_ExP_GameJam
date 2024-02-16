@@ -9,7 +9,11 @@ public class GameManager : MonoBehaviour
     public const string NAME = "@Game";
     private static GameManager instance;
 
+    
+
+    
     public FloorManager FloorManager;
+    public UIManager IngameUIManager;
 
     public static GameManager Instance
     {
@@ -58,6 +62,8 @@ public class GameManager : MonoBehaviour
         }
 
         FloorManager = GameObject.Find("@FloorManager").GetComponent<FloorManager>();
+        IngameUIManager = GameObject.Find("@UIManager").GetComponent<UIManager>();
+        FloorManager.FloorChangeListeners.Add(IngameUIManager);
         FloorManager.GoFloor(1);
     }
 
