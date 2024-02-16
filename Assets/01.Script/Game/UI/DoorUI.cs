@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class DoorUI : MonoBehaviour, IPointerClickHandler
 {
-    public BaseDoor door;
+    [FormerlySerializedAs("door")] public BaseGate gate;
     
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,7 @@ public class DoorUI : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(door)
-            door.OnOpen();
+        if(gate)
+            gate.OnOpen();
     }
 }

@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EmptyDoor : BaseDoor
+public abstract class BaseGate : MonoBehaviour
 {
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +18,6 @@ public class EmptyDoor : BaseDoor
         
     }
 
-    public override void OnOpen()
-    {
-        throw new System.NotImplementedException();
-    }
+
+    public abstract void OnOpen();
 }

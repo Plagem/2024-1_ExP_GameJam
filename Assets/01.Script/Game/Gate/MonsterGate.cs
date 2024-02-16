@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseDoor : MonoBehaviour
+public class MonsterGate : BaseGate
 {
-    
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +16,8 @@ public abstract class BaseDoor : MonoBehaviour
         
     }
 
-
-    public abstract void OnOpen();
+    public override void OnOpen()
+    {
+        throw new System.NotImplementedException();
+    }
 }

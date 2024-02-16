@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,4 +28,30 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
+
+    public GameState gameState = GameState.Main;
+
+
+    public void Start()
+    {
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "MainScene":
+                gameState = GameState.Main;
+                break;
+            case "GameScene":
+                gameState = GameState.Game;
+                break;
+        }
+        DontDestroyOnLoad(this);
+    }
+
+    
+}
+
+
+public enum GameState
+{
+    Main,
+    Game
 }

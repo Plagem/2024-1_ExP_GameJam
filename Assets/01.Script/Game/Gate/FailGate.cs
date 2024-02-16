@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorDoor : BaseDoor
+public class FailGate : BaseGate
 {
     // Start is called before the first frame update
     void Start()
@@ -18,6 +18,6 @@ public class DoorDoor : BaseDoor
 
     public override void OnOpen()
     {
-        throw new System.NotImplementedException();
+        
     }
 }
