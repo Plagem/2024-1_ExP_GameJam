@@ -2564,10 +2564,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
+  m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 2400, y: 1080}
+  m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2584,7 +2584,7 @@ Canvas:
   m_GameObject: {fileID: 1449659671}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -2857,6 +2857,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5929288902015005834, guid: 0ec6994ab2ca2e04f86e1f4fc68c4399, type: 3}
+      propertyPath: floorText
+      value: 
+      objectReference: {fileID: 16136407}
     - target: {fileID: 5929288902015005834, guid: 0ec6994ab2ca2e04f86e1f4fc68c4399, type: 3}
       propertyPath: inventory
       value: 
@@ -3252,7 +3256,6 @@ GameObject:
   - component: {fileID: 2020206063}
   - component: {fileID: 2020206062}
   - component: {fileID: 2020206061}
-  - component: {fileID: 2020206064}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3334,18 +3337,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2020206064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2020206060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9761e1895b3415e8ef7e55ed6381dd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2022958966
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,10 +9,13 @@ public class MainScreen : MonoBehaviour
 
     [SerializeField]
     private GameObject inventory;
+    [SerializeField]
+    private GameObject floorText;
 
     private void Start()
     {
         inventory.SetActive(false);
+        floorText.SetActive(false);
         GameManager.Instance.IngameUIManager.isGameClickDisabled = true;
         SoundManager.Instance.Play("bgm_1_mastered", SoundManager.SoundType.BGM);
 
@@ -26,6 +29,7 @@ public class MainScreen : MonoBehaviour
     public void StartGame()
     {
         inventory.SetActive(true);
+        floorText.SetActive(true);
         this.gameObject.SetActive(false);
         GameManager.Instance.IngameUIManager.isGameClickDisabled = false;
     }
