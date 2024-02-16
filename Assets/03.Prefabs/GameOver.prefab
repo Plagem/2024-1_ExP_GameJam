@@ -278,6 +278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7004450160211471458}
   - component: {fileID: 7041626429278024533}
+  - component: {fileID: -4400555410962123338}
   - component: {fileID: 2386801627538293010}
   - component: {fileID: 1202383728907580474}
   m_Layer: 5
@@ -318,6 +319,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4842372617209397040}
   m_CullTransparentMesh: 1
+--- !u!114 &-4400555410962123338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4842372617209397040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 728c04fd04aaba746a95db78963e02f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2386801627538293010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,9 +633,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1202383728907580474}
-        m_TargetAssemblyTypeName: GameoverPopup, Assembly-CSharp
-        m_MethodName: OnHome
+      - m_Target: {fileID: -4400555410962123338}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: Mainmenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -822,7 +835,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7915488407295191836}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -889,13 +902,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: -4400555410962123338}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

@@ -14,6 +14,13 @@ public class MainScreen : MonoBehaviour
     {
         inventory.SetActive(false);
         GameManager.Instance.IngameUIManager.isGameClickDisabled = true;
+        SoundManager.Instance.Play("bgm_1_mastered", SoundManager.SoundType.BGM);
+
+        if(PlayerPrefs.GetInt("IsRestart") == 1)
+        {
+            StartGame();
+            PlayerPrefs.SetInt("IsRestart", 0);
+        }
     }
 
     public void StartGame()
