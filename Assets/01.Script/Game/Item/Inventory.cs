@@ -153,7 +153,7 @@ public class Inventory : MonoBehaviour
             if (Items[i].DoorData.isRare)
             {
                 DoorItem item = Items[i];
-                
+                itemCount--;
                 return item;
             }
         }
