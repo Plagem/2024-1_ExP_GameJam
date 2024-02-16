@@ -30,6 +30,7 @@ public class FloorManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             int eventIdx = Utility.WeightedRandom(Probabliteis.ToArray());
+            Gates[i].init();
             Gates[i].GateEvent = GateEvents.GateEventList[eventIdx];
             Debug.Log($"init {i} gate : {GateEvents.GateEventList[eventIdx].name}");
         }
@@ -42,9 +43,9 @@ public class FloorManager : MonoBehaviour
     {
         foreach (var _gate in Gates)
         {
-            _gate.isFocused = false;
+            _gate.IsFocused = false;
         }
 
-        gate.isFocused = true;
+        gate.IsFocused = true;
     }
 }

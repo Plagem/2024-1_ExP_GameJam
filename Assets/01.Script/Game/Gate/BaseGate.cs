@@ -2,23 +2,52 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BaseGate : MonoBehaviour
 {
     public FloorManager fm;
     public GateEvent GateEvent;
-    public bool isFocused;
+    
+    SpriteRenderer sr;
+    
+    
+    // TODO : 상태 관리 바꿀수있으면 바꾸기
+    private bool isFocused;
+    private bool isCleared;
+
+    private GameObject FocusObject;
+
+    public bool IsFocused
+    {
+        get => isFocused;
+        set
+        {
+            FocusObject.SetActive(value);
+        }
+    }
     
     
     // Start is called before the first frame update
     void Start()
     {
-        fm = GameManager.Instance.FloorManager;
+        FocusObject = transform.GetChild(0).gameObject;
+        sr = GetComponent<SpriteRenderer>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    public void init()
+    {
+        isCleared = false;
+        IsFocused = false;
+        
+        sr.color = Color.white;
         
     }
 
@@ -30,16 +59,35 @@ public class BaseGate : MonoBehaviour
             Debug.LogError("이벤트 지정되지 않음");
             return;
         }
+
+        IsFocused = false;
         GateEvent.OnOpen.Invoke(this);
+    }
+
+    public void Clear()
+    {
+        Debug.Log("Clear");
+        isCleared = true;
+        sr.color = Color.yellow;
     }
 
     public void OnMouseDown()
     {
-        if (!isFocused)
+        Debug.Log($"Clicked {name} c: {isCleared} f:{isFocused}");
+        
+        if(isCleared)
         {
+            fm.GoNextFloor();
+            return;
+        }
+        // 초점 X
+        if (!IsFocused)
+        {
+            fm = GameManager.Instance.FloorManager;
             fm.Focus(this);
             return;
         }
+        // 초점 O
         OnOpen();
     }
 

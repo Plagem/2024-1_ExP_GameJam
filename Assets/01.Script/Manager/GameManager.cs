@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
                 break;
             case "GameScene":
                 gameState = GameState.Game;
+                StartGame(); // 테스트용
                 break;
         }
         DontDestroyOnLoad(this);
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour
         if (gameState == GameState.Start)
         {
             SceneManager.LoadScene("GameScene");
+            gameState = GameState.Game;
         }
 
         FloorManager = GameObject.Find("@FloorManager").GetComponent<FloorManager>();
