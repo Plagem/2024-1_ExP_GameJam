@@ -96,6 +96,7 @@ public class BaseGate : MonoBehaviour
         State = GateState.Opening;
         sr.sprite = openSprite;
         GateEvent.OnOpen.Invoke(this);
+        GameManager.Instance.IngameUIManager.overMsg = GateEvent.msg;
         
         StartCoroutine(Utility.WaitExecute(0.4f, () =>
         {
