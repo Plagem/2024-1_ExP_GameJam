@@ -16,6 +16,7 @@ public class RareItem:MonoBehaviour
 
     public IEnumerator go()
     {
+        SoundManager.Instance.Play("16. rare_door_revive");
         yield return StartCoroutine(goLeft());
         GetComponent<Animator>().SetTrigger("gogogo");
         transform.position = new Vector3(1040, 540, 0);

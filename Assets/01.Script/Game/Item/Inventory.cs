@@ -101,6 +101,7 @@ public class Inventory : MonoBehaviour
         // 인벤토리가 꽉 찼을 경우
         else
         {
+            SoundManager.Instance.Play("17. inven_full");
             Debug.Log("Full Inventory - Can't Add Item");
             return;
         }
