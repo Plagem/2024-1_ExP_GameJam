@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class UsingItem : MonoBehaviour
 {
-    public void UseItem(int itemSlot)
+    public void UsingItem1()
     {
-        
+
+    }
+
+    public void UsingItem2()
+    {
+
     }
 }
