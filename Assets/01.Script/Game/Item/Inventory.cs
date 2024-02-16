@@ -142,6 +142,6 @@ public class Inventory : MonoBehaviour
     
     public void UsingItemTest()
     {
-        UsingItem(2,gates[1]);
+        UsingItem(2,gates[2]);
     }
 }

@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
 
     public void ShowGameOver()
     {
+        //if(inventory.)
         GameObject gameover = Instantiate(GameoverPrefab,_canvas.transform);
         isGameClickDisabled = true;
     }
