@@ -27,8 +27,8 @@ namespace _01.Script.Game.Gate.Event
         public static GateEvent RareDoorGateEvent = new GateEvent("RareDoor").
             SetOpenEvent(gate =>
             {
-                GameObject doorObj = GameObject.Instantiate(gate.fm.DoorPrefeb, gate.transform);
-                doorObj.GetComponent<DoorMonsterBase>().isRare = true;
+                GameObject rareDoorObj = GameObject.Instantiate(gate.fm.DoorPrefeb, gate.transform);
+                rareDoorObj.GetComponent<DoorMonsterBase>().isRare = true;
             });
         
         public static GateEvent FailGateEvent = new GateEvent("Fail").

@@ -8,6 +8,7 @@ public class DoorMonsterBase : MonsterBase
 {
     private float hp;
     public bool isRare;
+    public int removeClick = 2;
 
     private DoorData doorData;
 
@@ -19,10 +20,13 @@ public class DoorMonsterBase : MonsterBase
         if(isRare)
         {
             randomDoorNum = 12;
+            gameObject.GetComponent<BoxCollider2D>().size = new Vector2(8, 8);
         }
         else
         {
             randomDoorNum  = Random.Range(1, 12);
+            gameObject.GetComponent<BoxCollider2D>().size = new Vector2(4, 4);
+
         }
         Debug.Log($"{randomDoorNum}번 생성");
         doorData = GameManager.Instance.FloorManager.AllDoorDataList[randomDoorNum];
@@ -39,12 +43,20 @@ public class DoorMonsterBase : MonsterBase
         gameObject.GetComponent<SpriteRenderer>().sprite = doorSprite;
 
         slider.gameObject.SetActive(true);
+        warningTab.gameObject.SetActive(true);
+        Debug.Log("워닝탭 활성화");
         goalHp = doorData.hp;
     }
 
     protected override void MonsterGetDamage()
     {
-        hp += damage*100;
+        removeClick--;
+        if(removeClick == 0)
+        {
+            warningTab.SetActive(false);
+        }
+
+        hp += damage;
         if(hp >= goalHp) 
         {
             Debug.Log("몬스터 캐치 성공!");
