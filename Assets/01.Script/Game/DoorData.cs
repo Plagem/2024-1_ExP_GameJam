@@ -34,7 +34,7 @@ using UnityEngine;
             get {
                 if(closeSprite == null)
                 {
-                    closeSprite = Resources.Load<Sprite>(String.Format("image/Gate/door{0:D2}_close", index));
+                    closeSprite = Resources.Load<Sprite>(String.Format("image/Gate/door{0:D2}_closed", index));
                     Debug.Log(String.Format("image/Gate/door{0:D2}_close", index));
                     Debug.Log(closeSprite.name);
                 }
