@@ -16,6 +16,8 @@ public class MainScreen : MonoBehaviour
     {
         inventory.SetActive(false);
         floorText.SetActive(false);
+        GameManager gm = GameManager.Instance;
+        gm.InitGameScene();
         GameManager.Instance.IngameUIManager.isGameClickDisabled = true;
         SoundManager.Instance.Play("bgm_1_mastered", SoundManager.SoundType.BGM);
 
