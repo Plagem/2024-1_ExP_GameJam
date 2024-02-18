@@ -15,7 +15,7 @@ public class Bear: MonoBehaviour
         yield return StartCoroutine(EnlargeRoutine(time, sizeMultiplier));
 
         GameManager.Instance.IngameUIManager.ShowGameOver(); //"5. game_over");
-        SoundManager.Instance.Play("5. game_over");
+        // SoundManager.Instance.Play("5. game_over");
     }
     
     public IEnumerator EnlargeRoutine(float time, float sizeMultiplier)

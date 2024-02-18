@@ -40,7 +40,7 @@ public class FloorManager : MonoBehaviour
     public bool IsGateClickable => Gates.All((g) =>
         g.State == BaseGate.GateState.Close || g.State == BaseGate.GateState.Focus|| g.State == BaseGate.GateState.Disabled);
     
-    [Header("EmptyGateEvent, MonsterGateEvent, DoorGateEvent, FailGateEvent")]
+    [Header("FailGateEvent , MonsterGateEvent, DoorGateEvent, RareDoorGateEvent, EmptyGateEvent")]
     public List<int> Probabliteis;
     public List<BaseGate> Gates;
     [Header("층 바뀜 리스너")] public List<IFloorChangeListener> FloorChangeListeners;

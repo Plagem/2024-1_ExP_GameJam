@@ -19,8 +19,10 @@ public class MainScreen : MonoBehaviour
         GameManager gm = GameManager.Instance;
         gm.InitGameScene();
         GameManager.Instance.IngameUIManager.isGameClickDisabled = true;
+        
         SoundManager.Instance.Play("bgm_1_mastered", SoundManager.SoundType.BGM);
-
+        
+        
         if(PlayerPrefs.GetInt("IsRestart") == 1)
         {
             StartGame();
@@ -30,12 +32,20 @@ public class MainScreen : MonoBehaviour
 
     public void StartGame()
     {
+        
         inventory.SetActive(true);
         floorText.SetActive(true);
         this.gameObject.SetActive(false);
         GameManager.Instance.IngameUIManager.isGameClickDisabled = false;
     }
 
+    public void PlaySound()
+    {
+        SoundManager.Instance.Play("1. touch");
+    }
+
+    
+    
     public void Exitgame()
     {
 #if UNITY_EDITOR
@@ -47,11 +57,13 @@ public class MainScreen : MonoBehaviour
 
     public void Credit()
     {
+        // SoundManager.Instance.Play("1. touch");
         credit.SetActive(true);
     }
 
     public void OffCredit()
     {
+        SoundManager.Instance.Play("1. touch");
         credit.SetActive(false);
     }
 }

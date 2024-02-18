@@ -1,4 +1,5 @@
 
+using _01.Script;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,7 +38,14 @@ public abstract class MonsterBase : MonoBehaviour
             CastRay();
         }
     }
-
+    public void AlignGate(BaseGate gate)
+    {
+        SpriteRenderer gateRenderer = gate.GetComponent<SpriteRenderer>();
+        float GateLeftPos = gate.transform.position.x - Utility.GetSpriteSize(gateRenderer,transform).x / 2;
+        float monsterXsize = Utility.GetSpriteSize(GetComponent<SpriteRenderer>(),transform).x;
+        transform.position =
+            new Vector3(GateLeftPos + monsterXsize / 2, transform.position.y, 0);
+    }
     private void CastRay()
     {
         mousePosition = Input.mousePosition;

@@ -11,6 +11,7 @@ namespace _01.Script.Game.Gate.Event
         public static GateEvent MonsterGateEvent = new GateEvent("Monster").SetOpenEvent(gate =>
         {
             GameObject monsterObj = GameObject.Instantiate(gate.fm.MonsterPrefeb, gate.transform);
+            monsterObj.GetComponent<Monster>().gate = gate;
             SoundManager.Instance.Play("11. monster_appears");
         }).SetEventMessage("몬스터가 문을 터뜨려버렸다..");
     

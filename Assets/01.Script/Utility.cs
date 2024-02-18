@@ -35,5 +35,18 @@ namespace _01.Script
             yield return new WaitForSeconds(time);
             action.Invoke();
         }
+
+        public static Vector3 GetSpriteSize(SpriteRenderer sr, Transform transform)
+        {
+            Vector3 worldSize = Vector3.zero;
+            Vector2 sprSize = sr.sprite.rect.size;
+            Vector2 localSprSize = sprSize / sr.sprite.pixelsPerUnit;
+            Debug.Log(sr.sprite.rect.size.x);
+            worldSize = localSprSize;
+            worldSize.x *= transform.lossyScale.x;
+            worldSize.y *= transform.lossyScale.y;
+            Debug.Log($"{localSprSize.x} * {transform.lossyScale.x}=> {worldSize.x}");
+            return worldSize;
+        }
     }
 }

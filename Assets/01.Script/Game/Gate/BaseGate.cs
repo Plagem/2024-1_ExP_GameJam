@@ -98,7 +98,7 @@ public class BaseGate : MonoBehaviour
         GateEvent.OnOpen.Invoke(this);
         GameManager.Instance.IngameUIManager.overMsg = GateEvent.msg;
         
-        StartCoroutine(Utility.WaitExecute(0.4f, () =>
+        StartCoroutine(Utility.WaitExecute(0.2f, () =>
         {
             sr.enabled = false;
             State = GateState.Opened;

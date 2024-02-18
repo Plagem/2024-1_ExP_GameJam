@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using _01.Script;
 
 public class Monster : MonsterBase
 {
@@ -10,6 +11,8 @@ public class Monster : MonsterBase
     private float maxHp;
     private float hp;
     private int removeClick = 2;
+
+    public BaseGate gate;
 
     protected override void Start()
     { 
@@ -32,7 +35,8 @@ public class Monster : MonsterBase
         warningTab.gameObject.SetActive(true);
         goalHp = 0;
         warningTab.transform.Find("Warning").GetComponent<Image>().sprite = Resources.Load<Sprite>("image/UIs/ui_monster");
-
+        if(gate) 
+            AlignGate(gate);
     }
 
     protected override void Update()
@@ -51,6 +55,7 @@ public class Monster : MonsterBase
         }
 
     }
+    
 
     IEnumerator MonsterAttack()
     {

@@ -18,12 +18,14 @@ public class LoadScene : MonoBehaviour
 
     public void Restart()
     {
+        SoundManager.Instance.Play("1. touch");
         PlayerPrefs.SetInt("IsRestart", 1);
         StartCoroutine(ToMain());
     }
 
     public void Mainmenu()
     {
+        SoundManager.Instance.Play("1. touch");
         PlayerPrefs.SetInt("IsRestart", 0);
         StartCoroutine(ToMain());
     }
