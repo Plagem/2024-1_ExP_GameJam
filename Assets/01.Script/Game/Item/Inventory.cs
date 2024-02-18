@@ -128,7 +128,29 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void UseItemRight(int slot) => UsingItem(slot, gates[2]);
+    public List<GameObject> HaveToDeactiveList = new List<GameObject>();
+    public int SelectedItemIdx = -1;
+
+    /// <summary>
+    /// 아이템 선택시 UI
+    /// </summary>
+    /// <param name="slot"></param>
+    public void SelectItemToDoor(int slot){
+        Debug.Log(slot);
+        SelectedItemIdx = slot;
+        HaveToDeactiveList.Clear();
+        var fm = GameManager.Instance.FloorManager;
+        GameObject focused = ItemSlot[slot].transform.GetChild(1).gameObject;
+        focused.SetActive(true);
+        HaveToDeactiveList.Add(focused);
+        for (int i = 0; i < fm.Gates.Count; i++)
+        {
+            BaseGate gate = fm.Gates[i];
+            GameObject arrow = gate.gameObject.transform.GetChild(1).gameObject;
+            arrow.SetActive(true);
+            HaveToDeactiveList.Add(arrow);
+        }
+    }
     public void UsingItem(int itemSlot, BaseGate gate)
     {
         Debug.Log($"{itemSlot} used");

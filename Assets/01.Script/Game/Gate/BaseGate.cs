@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using _01.Script;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -21,7 +22,7 @@ public class BaseGate : MonoBehaviour
 
     public enum GateState
     {
-        Close, Focus, Opening, Opened, Clear, Disabled
+        Close, Focus, Opening, Opened, Clear, Disabled, ItemUsing
     }
     
     // TODO : 상태 관리 바꿀수있으면 바꾸기
@@ -114,12 +115,25 @@ public class BaseGate : MonoBehaviour
         fm.FloorCleared();
     }
 
+    private UIManager uiM;
     public void OnMouseDown()
     {
         UIManager iuiM = gm.IngameUIManager;
         if (iuiM.UiHoverListener.isUIOverride)
             return;
         fm = GameManager.Instance.FloorManager;
+
+        Inventory inv =  iuiM.inventory;
+        if (inv.HaveToDeactiveList.Any())
+        {
+            for (int i = 0; i < inv.HaveToDeactiveList.Count ; i++)
+            {
+                inv.HaveToDeactiveList[i].SetActive(false);
+            }
+            inv.UsingItem(inv.SelectedItemIdx,this);
+            inv.HaveToDeactiveList.Clear();
+        }
+        
         if (iuiM.isGameClickDisabled || !fm.IsGateClickable)
             return;
         
@@ -139,7 +153,6 @@ public class BaseGate : MonoBehaviour
             case GateState.Clear:
                 // fm.GoNextFloor(); 자동으로 넘어감
                 break;
-            
         }
         
     }
