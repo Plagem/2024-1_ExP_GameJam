@@ -136,7 +136,11 @@ public class Inventory : MonoBehaviour
     /// </summary>
     /// <param name="slot"></param>
     public void SelectItemToDoor(int slot){
-        Debug.Log(slot);
+        DoorItem item = Items[slot];
+        if (HaveToDeactiveList.Any() || item == None)
+        {
+            return;
+        }
         SelectedItemIdx = slot;
         HaveToDeactiveList.Clear();
         var fm = GameManager.Instance.FloorManager;
