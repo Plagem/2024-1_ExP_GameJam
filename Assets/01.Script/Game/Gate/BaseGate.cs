@@ -109,7 +109,7 @@ public class BaseGate : MonoBehaviour
 
     public void Clear()
     {
-        Debug.Log("Clear");
+        // Debug.Log("Clear");
         State = GateState.Clear;
         fm.FloorCleared();
     }
@@ -123,7 +123,7 @@ public class BaseGate : MonoBehaviour
         if (iuiM.isGameClickDisabled || !fm.IsGateClickable)
             return;
         
-        Debug.Log($"Clicked {name} s: {state}");
+        // Debug.Log($"Clicked {name} s: {state}");
 
         switch (State)
         {
