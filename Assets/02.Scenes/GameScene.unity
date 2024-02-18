@@ -189,8 +189,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4289850879
+  m_fontColor: {r: 1, g: 0.92941177, b: 0.69411767, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1009,12 +1009,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0a8db911a002bbf41a2d7d8ce1bc60d7, type: 2}
   - {fileID: 11400000, guid: a1b341dba35a90144828e14360d893b5, type: 2}
   AllMonsterDataList:
-  - 10
-  - 15
-  - 15
-  - 15
   - 20
-  Probabliteis: 0400000014000000140000000600000032000000
+  - 30
+  - 30
+  - 30
+  - 40
+  Probabliteis: 0600000014000000140000000400000032000000
   Gates:
   - {fileID: 949638003}
   - {fileID: 1411457663}
@@ -3383,7 +3383,7 @@ RectTransform:
   m_Father: {fileID: 1157094522}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3408,11 +3408,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 76fa8f43dc3a07d49becca0d7363ce50, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 0
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

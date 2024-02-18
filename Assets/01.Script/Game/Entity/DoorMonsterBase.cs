@@ -28,41 +28,42 @@ public class DoorMonsterBase : MonsterBase
 
         
 
+        // 레어 문 생성
         if (isRare)
         {
             randomDoorNum = 12;
             gameObject.GetComponent<BoxCollider2D>().size = new Vector2(8, 8);
             idleSprite = Resources.Load<Sprite>($"image/Entity/12");
             attackedSprite = Resources.Load<Sprite>($"image/Entity/12_2");
+            // 사이즈 조정
+            transform.localScale = new Vector3(0.4f, 0.4f, 1f);
         }
+        // 일반 문 생성
         else
         {
             randomDoorNum  = Random.Range(1, 12);
             gameObject.GetComponent<BoxCollider2D>().size = new Vector2(4, 4);
             idleSprite = Resources.Load<Sprite>($"image/Entity/{randomDoorNum}");
             attackedSprite = Resources.Load<Sprite>($"image/Entity/{randomDoorNum}_2");
-
         }
-        Debug.Log($"{randomDoorNum}번 생성");
+
         doorData = GameManager.Instance.FloorManager.AllDoorDataList[randomDoorNum];
 
+        // 처음에 반피 깎여있다
         hp = doorData.hp / 2;
         this.gameObject.name = doorData.name;
         objectIndex = doorData.index;
 
-        Sprite doorSprite = Resources.Load<Sprite>($"image/Entity/{objectIndex}");
-        if(doorSprite == null )
-        {
-            Debug.Log("DoorSprite Null 발생");
-        }
         gameObject.GetComponent<SpriteRenderer>().sprite = idleSprite;
 
+        // 몬스터 체력바와 WarningTab 생성
         slider.gameObject.SetActive(true);
         warningTab.gameObject.SetActive(true);
         warningTab.transform.Find("Warning").GetComponent<Image>().sprite = Resources.Load<Sprite>("image/UIs/ui_catch");
         goalHp = doorData.hp;
     }
 
+    // 문 공격 시 0.05초동안 스프라이트 변경됨 (타격 이미지로)
     IEnumerator DoorAttack()
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = attackedSprite;
@@ -103,8 +104,15 @@ public class DoorMonsterBase : MonsterBase
 
         UpdateSlideBar();
 
-        hp -= Time.deltaTime;
-        if(hp <= 0 )
+        if (isRare)
+        {
+            hp -= Time.deltaTime * 3.5f;
+        }
+        else
+        {
+            hp -= Time.deltaTime * 2.0f;
+        }
+        if (hp <= 0 )
         {
             Destroy(this.gameObject);
             GameManager.Instance.IngameUIManager.ShowGameOver();

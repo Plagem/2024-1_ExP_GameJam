@@ -43,6 +43,7 @@ public class RareItem:MonoBehaviour
     public void Use()
     {
         BaseGate gate = GameManager.Instance.FloorManager.Gates[2];
+
         foreach (var _gate in GameManager.Instance.FloorManager.Gates)
         {
             if (_gate.State != BaseGate.GateState.Close && _gate.State != BaseGate.GateState.Focus)

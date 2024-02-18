@@ -27,16 +27,22 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
 
     public void OnFloorChanged(int floor)
     {
-        tmpFloor.text = floor + "층";
+        tmpFloor.text = floor + " F";
     }
 
     public string overMsg = "Error";
 
     public void ShowGameOver()
     {
-        DoorItem item = inventory.GetRare();SoundManager.Instance.StopTick();
+
+        DoorItem item = inventory.GetRare();
+        SoundManager.Instance.StopTick();
+
+        monsterSlider.gameObject.SetActive(false);
+        warningTab.gameObject.SetActive(false);
+
         /// 게임오버다 임마
-        if(item==null)
+        if (item==null)
         {
             isGameClickDisabled = true;
             GameObject gameover = Instantiate(GameoverPrefab,_canvas.transform);

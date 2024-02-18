@@ -7,7 +7,8 @@ public class Monster : MonsterBase
 {
 
     private float limitTime = 5f;
-    private float hp = 15;
+    private float maxHp;
+    private float hp;
     private int removeClick = 2;
 
     protected override void Start()
@@ -22,7 +23,8 @@ public class Monster : MonsterBase
         }
         gameObject.GetComponent<SpriteRenderer>().sprite = monsterSprite;
 
-        hp = GameManager.Instance.FloorManager.AllMonsterDataList[objectIndex];
+        maxHp = GameManager.Instance.FloorManager.AllMonsterDataList[objectIndex];
+        hp = maxHp;
 
         // 게임 화면에서 게이지 가져오기
 
@@ -87,6 +89,6 @@ public class Monster : MonsterBase
 
     private void UpdateSlideBar()
     {
-        slider.value = (hp / 15f);
+        slider.value = (hp / maxHp);
     }
 }
