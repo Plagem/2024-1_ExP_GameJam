@@ -10,9 +10,24 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
 
 
-    public float BGM_Value = 1.0f;
-    public float VFX_Value = 1.0f;
+    public float BGM_Value {
+        get => bgmValue;
+        set{
+            bgmValue =  value;
+            SoundManager.Instance.ChangeVolumeBGM(value);
+        }
+    }
+    public float VFX_Value{
+        get => vfxValue;
+        set{
+            vfxValue = value;
+            SoundManager.Instance.ChangeVolumeEffect(value);
+        }
+    }
 
+
+    private float bgmValue = 1.0f;
+    private float vfxValue = 1.0f;
 
     public FloorManager FloorManager;
     public UIManager IngameUIManager;

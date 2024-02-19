@@ -442,6 +442,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dac0cf2424322cf479bb09936197ca55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BGM_Slider: {fileID: 0}
+  VFX_Slider: {fileID: 0}
 --- !u!114 &1918193336289107382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,6 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameStartScene: {fileID: 0}
+  SettingPannel: {fileID: 0}
 --- !u!1 &2045619352598041703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,7 +1050,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1249321331507629284}
   m_HandleRect: {fileID: 5140760548231221849}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0.766
@@ -1321,7 +1324,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 3209491353402429809}
   m_HandleRect: {fileID: 5076441196951756060}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0.766
