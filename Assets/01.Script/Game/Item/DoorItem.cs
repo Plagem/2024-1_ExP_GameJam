@@ -34,8 +34,8 @@ public class DoorItem : MonoBehaviour
             img.sprite = DoorData.EntitySprite;
             img.color = Color.white;
             // 사이즈 재설정
-            Vector2 orinalSize = DoorData.EntitySprite.texture.Size();
-            float ratio = orinalSize.x / orinalSize.y;
+            Texture2D texture = DoorData.EntitySprite.texture;
+            float ratio = texture.width / texture.height;
             
             GetComponent<RectTransform>().sizeDelta = new Vector2(ratio * FixedHeight,FixedHeight);
         }
