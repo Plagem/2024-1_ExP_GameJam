@@ -146,7 +146,9 @@ public class SoundManager
             {
                 if (source.isPlaying == false)
                     return source;
+                
             }
+            
 
             return AddEffectSource();
         }
@@ -208,6 +210,32 @@ public class SoundManager
         public void ChangeVolumeEffect(float val)
         {
             mixer.SetFloat("Effect", Mathf.Log10(val) * 20);
+        }
+        
+        public void PauseBGM()
+        {
+            _bgmSource.Pause();
+        }
+
+        public void UnPauseBGM()
+        {
+            _bgmSource.UnPause();
+        }
+
+        public void PauseEffect()
+        {
+            foreach (var source in _effectSources)
+            {
+                source.Pause();
+            }
+        }
+
+        public void UnPauseEffect()
+        {
+            foreach (var source in _effectSources)
+            {
+                source.UnPause();
+            }
         }
 
         /// <summary>

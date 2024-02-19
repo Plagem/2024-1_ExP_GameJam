@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -21,6 +22,16 @@ public class Setting : MonoBehaviour
 
         BGM_Slider.onValueChanged.AddListener(delegate { OnSliderValueChanged_BGM(); });
         VFX_Slider.onValueChanged.AddListener(delegate { OnSliderValueChanged_VFX(); });
+    }
+
+    private void OnEnable()
+    {
+        SoundManager.Instance.PauseEffect();
+    }
+
+    private void OnDisable()
+    {
+        SoundManager.Instance.UnPauseEffect();
     }
 
     void OnSliderValueChanged_BGM()
