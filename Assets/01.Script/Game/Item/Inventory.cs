@@ -131,6 +131,7 @@ public class Inventory : MonoBehaviour
     public List<GameObject> HaveToDeactiveList = new List<GameObject>();
     public int SelectedItemIdx = -1;
 
+    public GameObject ItemUseMsg;
     /// <summary>
     /// 아이템 선택시 UI
     /// </summary>
@@ -143,10 +144,14 @@ public class Inventory : MonoBehaviour
         }
         SelectedItemIdx = slot;
         HaveToDeactiveList.Clear();
+        
+        // 아이템창 흰 박스
         var fm = GameManager.Instance.FloorManager;
         GameObject focused = ItemSlot[slot].transform.GetChild(1).gameObject;
         focused.SetActive(true);
         HaveToDeactiveList.Add(focused);
+        
+        // 화살표
         for (int i = 0; i < fm.Gates.Count; i++)
         {
             BaseGate gate = fm.Gates[i];
@@ -154,6 +159,10 @@ public class Inventory : MonoBehaviour
             arrow.SetActive(true);
             HaveToDeactiveList.Add(arrow);
         }
+        
+        // 알림창
+        ItemUseMsg.SetActive(true);
+        HaveToDeactiveList.Add(ItemUseMsg);
     }
     public void UsingItem(int itemSlot, BaseGate gate)
     {
