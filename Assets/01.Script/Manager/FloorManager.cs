@@ -23,8 +23,6 @@ public class FloorManager : MonoBehaviour
 
     private int currentFloor = 0;
 
-    public float BGM_Value = 1.0f;
-    public float VFX_Value = 1.0f;
 
     public int CurrentFloor
     {
