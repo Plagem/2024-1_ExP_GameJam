@@ -137,7 +137,7 @@ public class Inventory : MonoBehaviour
     /// <param name="slot"></param>
     public void SelectItemToDoor(int slot){
         DoorItem item = Items[slot];
-        if (HaveToDeactiveList.Any() || item.DoorData == None)
+        if (HaveToDeactiveList.Any() || item.DoorData == None || item.DoorData.isRare)
         {
             return;
         }
