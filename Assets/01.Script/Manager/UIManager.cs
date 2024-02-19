@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
     [SerializeField] private GameObject GameoverPrefab;
     public GameObject warningTab;
     public Inventory inventory;
+    public GameObject pauseKey;
 
     public UiHoverListener UiHoverListener;
     public bool isGameClickDisabled = false;
@@ -40,6 +41,7 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
 
         monsterSlider.gameObject.SetActive(false);
         warningTab.gameObject.SetActive(false);
+        pauseKey.SetActive(false);
 
         /// 게임오버다 임마
         if (item==null)
@@ -63,6 +65,7 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
         // GameObject gameover = Instantiate(GameoverPrefab,_canvas.transform);
        
     }
+
 
     public void ShowGameOverF()
     {

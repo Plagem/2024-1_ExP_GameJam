@@ -9,9 +9,11 @@ public class GameManager : MonoBehaviour
     public const string NAME = "@Game";
     private static GameManager instance;
 
-    
 
-    
+    public float BGM_Value = 1.0f;
+    public float VFX_Value = 1.0f;
+
+
     public FloorManager FloorManager;
     public UIManager IngameUIManager;
 

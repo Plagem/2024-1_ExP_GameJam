@@ -8,12 +8,28 @@ public class LoadScene : MonoBehaviour
 {
     [SerializeField]
     MainScreen GameStartScene;
+    [SerializeField]
+    GameObject SettingPannel;
 
     public void GameStart()
     {
         SoundManager.Instance.Play("1. touch");
         // 인게임 씬 이름 : GameScene
         StartCoroutine(ToMain());
+    }
+
+    public void GamePause()
+    {
+        SoundManager.Instance.Play("1. touch");
+        SettingPannel.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void GameResume()
+    {
+        SoundManager.Instance.Play("1. touch");
+        SettingPannel.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 
     public void Restart()

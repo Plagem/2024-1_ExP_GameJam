@@ -11,11 +11,14 @@ public class MainScreen : MonoBehaviour
     private GameObject inventory;
     [SerializeField]
     private GameObject floorText;
+    [SerializeField]
+    private GameObject pauseKey;
 
     private void Start()
     {
         inventory.SetActive(false);
         floorText.SetActive(false);
+        pauseKey.SetActive(false);
         GameManager gm = GameManager.Instance;
         gm.InitGameScene();
         GameManager.Instance.IngameUIManager.isGameClickDisabled = true;
@@ -35,6 +38,8 @@ public class MainScreen : MonoBehaviour
         
         inventory.SetActive(true);
         floorText.SetActive(true);
+        pauseKey.SetActive(true);
+        
         this.gameObject.SetActive(false);
         GameManager.Instance.IngameUIManager.isGameClickDisabled = false;
     }
