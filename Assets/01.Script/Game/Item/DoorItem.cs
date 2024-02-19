@@ -35,8 +35,8 @@ public class DoorItem : MonoBehaviour
             img.color = Color.white;
             // 사이즈 재설정
             Texture2D texture = DoorData.EntitySprite.texture;
-            float ratio = texture.width / texture.height;
-            
+            float ratio = texture.width / (float) texture.height;
+            Debug.Log($"{ratio} = {texture.width} {texture.height}");
             GetComponent<RectTransform>().sizeDelta = new Vector2(ratio * FixedHeight,FixedHeight);
         }
     }

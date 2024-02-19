@@ -228,6 +228,7 @@ public class SoundManager
             {
                 source.Pause();
             }
+            _tickingSource.Pause();
         }
 
         public void UnPauseEffect()
@@ -236,6 +237,7 @@ public class SoundManager
             {
                 source.UnPause();
             }
+            _tickingSource.UnPause();
         }
 
         /// <summary>
