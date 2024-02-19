@@ -13,7 +13,8 @@ public class MainScreen : MonoBehaviour
     private GameObject floorText;
     [SerializeField]
     private GameObject pauseKey;
-
+    [SerializeField]
+    private GameObject howto;
     private void Start()
     {
         inventory.SetActive(false);
@@ -70,5 +71,17 @@ public class MainScreen : MonoBehaviour
     {
         SoundManager.Instance.Play("1. touch");
         credit.SetActive(false);
+    }
+    
+    public void Howto()
+    {
+        // SoundManager.Instance.Play("1. touch");
+        howto.SetActive(true);
+    }
+
+    public void OffHoto()
+    {
+        SoundManager.Instance.Play("1. touch");
+        howto.SetActive(false);
     }
 }
