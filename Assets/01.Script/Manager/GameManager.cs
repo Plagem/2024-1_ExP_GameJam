@@ -41,6 +41,12 @@ public class GameManager : MonoBehaviour
     
     public void Start()
     {
+        if (!PlayerPrefs.HasKey("BGM_Value")) PlayerPrefs.SetFloat("BGM_Value", 1.0f);
+        if (!PlayerPrefs.HasKey("VFX_Value")) PlayerPrefs.SetFloat("VFX_Value", 1.0f);
+
+        BGM_Value = PlayerPrefs.GetFloat("BGM_Value");
+        VFX_Value = PlayerPrefs.GetFloat("VFX_Value");
+
         switch (SceneManager.GetActiveScene().name)
         {
             case "MainScene":
