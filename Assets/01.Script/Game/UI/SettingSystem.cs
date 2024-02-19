@@ -27,11 +27,13 @@ public class Setting : MonoBehaviour
     private void OnEnable()
     {
         SoundManager.Instance.PauseEffect();
+        GameManager.Instance.IngameUIManager.isGameClickDisabled = true;
     }
 
     private void OnDisable()
     {
         SoundManager.Instance.UnPauseEffect();
+        GameManager.Instance.IngameUIManager.isGameClickDisabled = false;
     }
 
     void OnSliderValueChanged_BGM()

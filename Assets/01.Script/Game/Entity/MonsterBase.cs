@@ -55,6 +55,9 @@ public abstract class MonsterBase : MonoBehaviour
 
         if (hit.collider == null) return;
 
+        if (GameManager.Instance.IngameUIManager.isGameClickDisabled || GameManager.Instance.IngameUIManager.UiHoverListener.isUIOverride)
+            return;
+        
         if (hit.collider.gameObject == this.gameObject)
         {
             MonsterGetDamage();
