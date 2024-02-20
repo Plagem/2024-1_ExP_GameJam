@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
     [SerializeField]
     private TextMeshProUGUI tmpFloor;
     [SerializeField] public Slider monsterSlider;
+    [SerializeField] public Slider monsterTimer;
     [SerializeField] private Canvas _canvas;
     [SerializeField] private GameObject GameoverPrefab;
     public GameObject warningTab;
@@ -41,6 +42,7 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
 
         monsterSlider.gameObject.SetActive(false);
         warningTab.gameObject.SetActive(false);
+        monsterTimer.gameObject.SetActive(false);
         pauseKey.SetActive(false);
 
         /// 게임오버다 임마

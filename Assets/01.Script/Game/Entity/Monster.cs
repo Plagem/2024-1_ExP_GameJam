@@ -6,8 +6,6 @@ using _01.Script;
 
 public class Monster : MonsterBase
 {
-
-    private float limitTime = 5f;
     private float maxHp;
     private float hp;
     private int removeClick = 2;
@@ -29,10 +27,14 @@ public class Monster : MonsterBase
         maxHp = GameManager.Instance.FloorManager.AllMonsterDataList[objectIndex];
         hp = maxHp;
 
+        limitTime = 5f;
+        remainTime = limitTime;
+
         // 게임 화면에서 게이지 가져오기
 
         slider.gameObject.SetActive(true);
         warningTab.gameObject.SetActive(true);
+        monsterTimer.gameObject.SetActive(true);
         goalHp = 0;
         warningTab.transform.Find("Warning").GetComponent<Image>().sprite = Resources.Load<Sprite>("image/UIs/ui_monster");
         if(gate) 
@@ -45,8 +47,8 @@ public class Monster : MonsterBase
 
         UpdateSlideBar();
 
-        limitTime -= Time.deltaTime;
-        if (limitTime < 0)
+        remainTime -= Time.deltaTime;
+        if (remainTime < 0)
         {
             Destroy(this.gameObject);
             GameManager.Instance.IngameUIManager.ShowGameOver();
@@ -81,6 +83,7 @@ public class Monster : MonsterBase
             Debug.Log("몬스터 사살 성공!");
             Destroy(this.gameObject);
             slider.gameObject.SetActive(false);
+            monsterTimer.gameObject.SetActive(false);
             GameManager.Instance.FloorManager.FloorCleared();
             SoundManager.Instance.Play("14. monster_battle_success");
             SoundManager.Instance.StopTick();
@@ -95,5 +98,6 @@ public class Monster : MonsterBase
     private void UpdateSlideBar()
     {
         slider.value = (hp / maxHp);
+        monsterTimer.value = (remainTime / limitTime);
     }
 }

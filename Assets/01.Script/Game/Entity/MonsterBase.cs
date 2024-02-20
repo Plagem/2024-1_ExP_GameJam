@@ -12,10 +12,15 @@ public abstract class MonsterBase : MonoBehaviour
     protected Slider slider;
     [SerializeField]
     protected GameObject warningTab;
+    [SerializeField]
+    protected Slider monsterTimer;
 
     protected float damage = 1f;
     protected float goalHp;
     protected int objectIndex;
+
+    protected float limitTime;
+    protected float remainTime;
 
     float maxDistance = 15f;
     Vector3 mousePosition;
@@ -27,6 +32,7 @@ public abstract class MonsterBase : MonoBehaviour
     {
         slider = GameManager.Instance.IngameUIManager.monsterSlider;
         warningTab = GameManager.Instance.IngameUIManager.warningTab;
+        monsterTimer = GameManager.Instance.IngameUIManager.monsterTimer;
         monster = gameObject;
         SoundManager.Instance.PlayTick();
     }

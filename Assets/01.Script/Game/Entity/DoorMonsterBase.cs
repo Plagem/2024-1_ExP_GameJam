@@ -40,6 +40,8 @@ public class DoorMonsterBase : MonsterBase
             attackedSprite = Resources.Load<Sprite>($"image/Entity/12_2");
             // 사이즈 조정
             transform.localScale = new Vector3(0.4f, 0.4f, 1f);
+            limitTime = 7f;
+            remainTime = limitTime;
             
             // 반짝이 생성
             GameObject flare = Instantiate(flareEffect, Vector3.zero, Quaternion.identity);
@@ -54,6 +56,8 @@ public class DoorMonsterBase : MonsterBase
             gameObject.GetComponent<BoxCollider2D>().size = new Vector2(4, 4);
             idleSprite = Resources.Load<Sprite>($"image/Entity/{randomDoorNum}");
             attackedSprite = Resources.Load<Sprite>($"image/Entity/{randomDoorNum}_2");
+            limitTime = 5f;
+            remainTime = limitTime;
         }
 
         doorData = GameManager.Instance.FloorManager.AllDoorDataList[randomDoorNum];
@@ -68,6 +72,7 @@ public class DoorMonsterBase : MonsterBase
         // 몬스터 체력바와 WarningTab 생성
         slider.gameObject.SetActive(true);
         warningTab.gameObject.SetActive(true);
+        monsterTimer.gameObject.SetActive(true);
         warningTab.transform.Find("Warning").GetComponent<Image>().sprite = Resources.Load<Sprite>("image/UIs/ui_catch");
         goalHp = doorData.hp;
     }
@@ -95,6 +100,7 @@ public class DoorMonsterBase : MonsterBase
             SoundManager.Instance.Play("9. door_catch_success");
             Destroy(this.gameObject);
             slider.gameObject.SetActive(false);
+            monsterTimer.gameObject.SetActive(false);
             GameManager.Instance.FloorManager.FloorCleared();
             inventory.AddItem(doorData);
             SoundManager.Instance.StopTick();
@@ -112,6 +118,15 @@ public class DoorMonsterBase : MonsterBase
         base.Update();
 
         UpdateSlideBar();
+
+        remainTime -= Time.deltaTime;
+        if (remainTime < 0)
+        {
+            Destroy(this.gameObject);
+            GameManager.Instance.IngameUIManager.ShowGameOver();
+            SoundManager.Instance.Play("10. door_catch_failure");
+
+        }
 
         if (isRare)
         {
@@ -132,6 +147,7 @@ public class DoorMonsterBase : MonsterBase
     private void UpdateSlideBar()
     {
         slider.value = (hp / goalHp);
+        monsterTimer.value = (remainTime / limitTime);
     }
 
     private void MakeParticle()
