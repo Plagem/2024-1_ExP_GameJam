@@ -144,3 +144,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 0}
+  warningTab: {fileID: 0}
+  isRare: 0
+  flareEffect: {fileID: 2397752906948037409, guid: 5054b848aca279d4884f157088ef6f3e, type: 3}

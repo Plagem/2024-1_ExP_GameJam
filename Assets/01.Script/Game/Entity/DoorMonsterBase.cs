@@ -15,6 +15,9 @@ public class DoorMonsterBase : MonsterBase
 
     private Inventory inventory;
 
+    [SerializeField]
+    private GameObject flareEffect;
+
     protected override void Start()
     {
         base.Start();
@@ -37,6 +40,12 @@ public class DoorMonsterBase : MonsterBase
             attackedSprite = Resources.Load<Sprite>($"image/Entity/12_2");
             // 사이즈 조정
             transform.localScale = new Vector3(0.4f, 0.4f, 1f);
+            
+            // 반짝이 생성
+            GameObject flare = Instantiate(flareEffect, Vector3.zero, Quaternion.identity);
+            flare.transform.SetParent(this.transform);
+            flare.transform.localScale = Vector3.one * 2.5f;
+            flare.transform.localPosition = new Vector3(-10, 5, 0);
         }
         // 일반 문 생성
         else
@@ -123,5 +132,11 @@ public class DoorMonsterBase : MonsterBase
     private void UpdateSlideBar()
     {
         slider.value = (hp / goalHp);
+    }
+
+    private void MakeParticle()
+    {
+        gameObject.AddComponent<ParticleSystem>();
+
     }
 }
