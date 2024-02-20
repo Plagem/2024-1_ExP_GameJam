@@ -40,7 +40,7 @@ public class DoorMonsterBase : MonsterBase
             attackedSprite = Resources.Load<Sprite>($"image/Entity/12_2");
             // 사이즈 조정
             transform.localScale = new Vector3(0.4f, 0.4f, 1f);
-            limitTime = 7f;
+            limitTime = 10f;
             remainTime = limitTime;
             
             // 반짝이 생성
@@ -130,11 +130,11 @@ public class DoorMonsterBase : MonsterBase
 
         if (isRare)
         {
-            hp -= Time.deltaTime * 3.5f;
+            hp -= Time.deltaTime * 6.0f;
         }
         else
         {
-            hp -= Time.deltaTime * 2.0f;
+            hp -= Time.deltaTime * 4.0f;
         }
         if (hp <= 0 )
         {
