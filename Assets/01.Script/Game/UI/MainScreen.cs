@@ -63,7 +63,7 @@ public class MainScreen : MonoBehaviour
 
     public void Credit()
     {
-        // SoundManager.Instance.Play("1. touch");
+        //SoundManager.Instance.Play("1. touch");
         credit.SetActive(true);
     }
 
@@ -75,7 +75,7 @@ public class MainScreen : MonoBehaviour
     
     public void Howto()
     {
-        // SoundManager.Instance.Play("1. touch");
+        SoundManager.Instance.Play("1. touch");
         howto.SetActive(true);
     }
 
