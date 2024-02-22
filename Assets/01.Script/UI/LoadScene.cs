@@ -11,6 +11,13 @@ public class LoadScene : MonoBehaviour
     [SerializeField]
     GameObject SettingPannel;
 
+    private GameObject pauseKey;
+
+    private void Start()
+    {
+        pauseKey = GameManager.Instance.IngameUIManager.pauseKey;
+    }
+
     public void GameStart()
     {
         SoundManager.Instance.Play("1. touch");
@@ -28,6 +35,7 @@ public class LoadScene : MonoBehaviour
     public void GameResume()
     {
         SoundManager.Instance.Play("1. touch");
+        SettingPannel.SetActive(false);
         Time.timeScale = 1.0f;
     }
 
