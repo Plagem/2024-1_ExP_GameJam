@@ -35,7 +35,7 @@ public class DoorMonsterBase : MonsterBase
         if (isRare)
         {
             randomDoorNum = 12;
-            gameObject.GetComponent<BoxCollider2D>().size = new Vector2(8, 8);
+            gameObject.GetComponent<BoxCollider2D>().size = new Vector2(20, 20);
             idleSprite = Resources.Load<Sprite>($"image/Entity/12");
             attackedSprite = Resources.Load<Sprite>($"image/Entity/12_2");
             // 사이즈 조정
@@ -53,7 +53,7 @@ public class DoorMonsterBase : MonsterBase
         else
         {
             randomDoorNum  = Random.Range(1, 12);
-            gameObject.GetComponent<BoxCollider2D>().size = new Vector2(4, 4);
+            gameObject.GetComponent<BoxCollider2D>().size = new Vector2(8, 8);
             idleSprite = Resources.Load<Sprite>($"image/Entity/{randomDoorNum}");
             attackedSprite = Resources.Load<Sprite>($"image/Entity/{randomDoorNum}_2");
             limitTime = 5f;
@@ -130,7 +130,7 @@ public class DoorMonsterBase : MonsterBase
 
         if (isRare)
         {
-            hp -= Time.deltaTime * 6.0f;
+            hp -= Time.deltaTime * 5.0f;
         }
         else
         {

@@ -28,7 +28,6 @@ public class LoadScene : MonoBehaviour
     public void GameResume()
     {
         SoundManager.Instance.Play("1. touch");
-        SettingPannel.SetActive(false);
         Time.timeScale = 1.0f;
     }
 

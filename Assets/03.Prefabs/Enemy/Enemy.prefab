@@ -129,7 +129,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 6}
+  m_Size: {x: 8, y: 8}
   m_EdgeRadius: 0
 --- !u!114 &776226217069675641
 MonoBehaviour:
@@ -144,3 +144,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 0}
+  warningTab: {fileID: 0}
+  monsterTimer: {fileID: 0}
+  gate: {fileID: 0}
