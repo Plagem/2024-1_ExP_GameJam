@@ -43,7 +43,7 @@ public class UIManager : MonoBehaviour, IFloorChangeListener
         monsterSlider.gameObject.SetActive(false);
         warningTab.gameObject.SetActive(false);
         monsterTimer.gameObject.SetActive(false);
-        pauseKey.SetActive(false);
+        //pauseKey.SetActive(false);
 
         /// 게임오버다 임마
         if (item==null)

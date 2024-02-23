@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 7
   Doorname: 
-  hp: 30
+  hp: 20
   ability: 1
   isRare: 0
   closeSprite: {fileID: 21300000, guid: 06eadeada6fcd2b40baca80931b797ba, type: 3}

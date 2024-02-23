@@ -130,11 +130,11 @@ public class DoorMonsterBase : MonsterBase
 
         if (isRare)
         {
-            hp -= Time.deltaTime * 5.0f;
+            hp -= Time.deltaTime * 4.0f;
         }
         else
         {
-            hp -= Time.deltaTime * 4.0f;
+            hp -= Time.deltaTime * 3.0f;
         }
         if (hp <= 0 )
         {
